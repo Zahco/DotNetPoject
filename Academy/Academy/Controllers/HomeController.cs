@@ -26,5 +26,7 @@ namespace Academy.Controllers
 
             return View();
         }
+
+
     }
 }

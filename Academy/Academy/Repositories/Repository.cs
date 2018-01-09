@@ -1,6 +1,7 @@
 ﻿using Academy.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -8,11 +9,11 @@ namespace Academy.Repositories
 {
     public class Repository<E> where E : EntityWithId
     {
-        public IQueryable<E> Entities { get; set; }
+        protected DbSet<E> Entities { get; set; }
 
-        public Entities DBase { get; set; }
+        protected Entities DBase { get; set; }
 
-        public Repository(IQueryable<E> entities, Entities _dbase)
+        public Repository(DbSet<E> entities, Entities _dbase)
         {
             Entities = entities;
             DBase = _dbase;
@@ -30,12 +31,15 @@ namespace Academy.Repositories
 
         public void Add(E entity)
         {
-            Entities.ToList().Add(entity);
+            Entities.Add(entity);
         }
+
+        protected void BeforeDelete(E entity) { }
 
         public void Delete(E entity)
         {
-            Entities.ToList().Remove(entity);
+            BeforeDelete(entity);
+            Entities.Remove(entity);
         }
 
         public void Save()

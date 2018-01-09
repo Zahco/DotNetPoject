@@ -1,0 +1,16 @@
+﻿@model AcademyModel
+@{
+    ViewBag.Title = "AddOrUpdate";
+}
+
+<h2>AddOrUpdate</h2>
+
+@using (Html.BeginForm("AddOrUpdate", "Academy", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.Id)
+
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+
+    <button type="submit">Sauvegarder</button>
+}

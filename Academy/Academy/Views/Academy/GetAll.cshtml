@@ -1,0 +1,9 @@
+﻿@model IEnumerable<AcademyModel>
+
+<p><a href="@Url.Action("AddOrUpdate", "Academy")">Ajouter</a></p>
+
+@foreach(var academy in Model)
+{
+    <p><a href="@Url.Action("Get", "Academy", new { id = academy.Id })">@academy.Name</a></p>
+}
+
