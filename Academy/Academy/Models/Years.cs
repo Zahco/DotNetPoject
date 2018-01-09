@@ -6,7 +6,7 @@ namespace Academy.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Years
+    public partial class Years : EntityWithId
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Years()
@@ -14,8 +14,6 @@ namespace Academy.Models
             Classrooms = new HashSet<Classrooms>();
             Periods = new HashSet<Periods>();
         }
-
-        public Guid Id { get; set; }
 
         public int Year { get; set; }
 

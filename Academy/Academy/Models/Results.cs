@@ -6,10 +6,8 @@ namespace Academy.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Results
+    public partial class Results : EntityWithId
     {
-        public Guid Id { get; set; }
-
         public Guid Evaluation_Id { get; set; }
 
         public Guid Pupil_Id { get; set; }

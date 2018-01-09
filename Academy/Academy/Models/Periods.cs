@@ -6,15 +6,13 @@ namespace Academy.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Periods
+    public partial class Periods : EntityWithId
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Periods()
         {
             Evaluations = new HashSet<Evaluations>();
         }
-
-        public Guid Id { get; set; }
 
         public DateTime Begin { get; set; }
 

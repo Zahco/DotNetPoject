@@ -6,7 +6,7 @@ namespace Academy.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Users
+    public partial class Users : EntityWithId
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Users()
@@ -15,8 +15,6 @@ namespace Academy.Models
             Establishments = new HashSet<Establishments>();
             Evaluations = new HashSet<Evaluations>();
         }
-
-        public Guid Id { get; set; }
 
         [Required]
         [StringLength(50)]

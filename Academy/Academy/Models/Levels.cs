@@ -6,15 +6,13 @@ namespace Academy.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Levels
+    public partial class Levels : EntityWithId
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Levels()
         {
             Pupils = new HashSet<Pupils>();
         }
-
-        public Guid Id { get; set; }
 
         [Required]
         [StringLength(50)]
