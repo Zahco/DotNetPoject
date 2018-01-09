@@ -12,11 +12,15 @@ namespace Academy.Controllers
 {
     public class APIController : Controller
     {
-        public AcademyRepository AcademyRepository { get; set; }
+        public AcademyRepository AcademyRepository { get; }
+
+        public EstablishmentRepository EstablishmentRepository { get; }
 
         public APIController()
         {
-            AcademyRepository = new AcademyRepository(new Entities());
+            var entities = new Entities();
+            AcademyRepository = new AcademyRepository(entities);
+            EstablishmentRepository = new EstablishmentRepository(entities);
         }
 
         public ActionResult GetAcademies()
@@ -24,5 +28,12 @@ namespace Academy.Controllers
             var academies = AcademyRepository.All().Select(a => AcademyModel.ToModel(a));
             return Json(academies, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult GetEstablishments()
+        {
+            var establishments = EstablishmentRepository.All().Select(e => EstablishmentModel.ToModel(e));
+            return Json(establishments, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

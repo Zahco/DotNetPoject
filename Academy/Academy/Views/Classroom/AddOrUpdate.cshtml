@@ -1,0 +1,56 @@
+﻿@model ClassroomModel
+@{
+    ViewBag.Title = "AddOrUpdate";
+}
+
+<h2>AddOrUpdate</h2>
+
+@using (Html.BeginForm("AddOrUpdate", "Classroom", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.Id)
+
+    <p>
+        @Html.LabelFor(model => model.Title)
+        @Html.EditorFor(model => model.Title)
+        @Html.ValidationMessageFor(model => model.Title)
+    </p>
+
+    <p>
+        @Html.LabelFor(model => model.Establishments)
+        <select id="ddlEstablishments"></select>
+    </p>
+    
+    <p><button type="submit">Sauvegarder</button></p>
+}
+
+@section scripts {
+<script type="text/javascript">
+    $(document).ready(getEstablishments());
+
+    function getEstablishments() {
+        $.ajax({
+            type: "GET",
+            url: "@Url.Action("GetEstablishments", "API")",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            failure: function (response) {
+                alert(response.d);
+            },
+            success: function (data) {
+                for (var i = 0; i < data.length; ++i) {
+                    var opt = new Option(data[i].Name, data[i].Id);
+                    $('#ddlEstablishments').append(opt);
+                }
+            }
+        });
+    }
+
+    function () {
+        $('ddlEstablishments').on('change', function () {
+            @Model.Establishment_Id = $('ddlEstablishments').val();
+        });
+    }
+
+</script>
+}
+
