@@ -1,0 +1,9 @@
+﻿@model IEnumerable<EstablishmentModel>
+
+<p><a href="@Url.Action("AddOrUpdate", "Establishment")">Ajouter</a></p>
+
+@foreach(var establishment in Model)
+{
+    <p><a href="@Url.Action("Get", "Establishment", new { id = establishment.Id })">@establishment.Name</a> <span>@establishment.FullAddress</span></p>
+}
+

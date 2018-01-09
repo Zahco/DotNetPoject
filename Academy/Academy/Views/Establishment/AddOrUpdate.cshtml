@@ -1,0 +1,38 @@
+﻿@model EstablishmentModel
+@{
+    ViewBag.Title = "AddOrUpdate";
+}
+
+<h2>AddOrUpdate</h2>
+
+@using (Html.BeginForm("AddOrUpdate", "Establishment", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.Id)
+
+    <p>
+        @Html.LabelFor(model => model.Name)
+        @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.Address)
+        @Html.EditorFor(model => model.Address)
+        @Html.ValidationMessageFor(model => model.Address)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.Town)
+        @Html.EditorFor(model => model.Town)
+        @Html.ValidationMessageFor(model => model.Town)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.PostCode)
+        @Html.EditorFor(model => model.PostCode)
+        @Html.ValidationMessageFor(model => model.PostCode)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.Academy)
+        @Html.EditorFor(model => model.Academy)
+        @Html.ValidationMessageFor(model => model.Academy)
+    </p>
+    <p><button type="submit">Sauvegarder</button></p>
+}

@@ -151,6 +151,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AcademyController.cs" />
+    <Compile Include="Controllers\EstablishmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
@@ -173,8 +174,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AcademyRepository.cs" />
     <Compile Include="Repositories\ClassroomRepository.cs" />
+    <Compile Include="Repositories\EstablishmentRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="WebModels\AcademyModel.cs" />
+    <Compile Include="WebModels\EstablishmentModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -217,6 +221,9 @@
     <Content Include="Views\Academy\GetAll.cshtml" />
     <Content Include="Views\Academy\Get.cshtml" />
     <Content Include="Views\Academy\AddOrUpdate.cshtml" />
+    <Content Include="Views\Establishment\AddOrUpdate.cshtml" />
+    <Content Include="Views\Establishment\Get.cshtml" />
+    <Content Include="Views\Establishment\GetAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
