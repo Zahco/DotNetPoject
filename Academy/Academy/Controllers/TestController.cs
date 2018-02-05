@@ -1,4 +1,4 @@
-﻿using Academy.Models;
+﻿using Academy.Entities;
 using Academy.Repositories;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ namespace Academy.Controllers
 
         public TestController()
         {
-            AcademyRepository = new AcademyRepository(new Entities());
+            AcademyRepository = new AcademyRepository(new Entities.Entities());
         }
 
         // GET: Test

@@ -1,4 +1,4 @@
-namespace Academy.Models
+namespace Academy.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -6,19 +6,19 @@ namespace Academy.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Cycles : EntityWithId
+    public partial class Academies : EntityWithId
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Cycles()
+        public Academies()
         {
-            Levels = new HashSet<Levels>();
+            Establishments = new HashSet<Establishments>();
         }
 
         [Required]
-        [StringLength(255)]
-        public string Title { get; set; }
+        [StringLength(50)]
+        public string Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Levels> Levels { get; set; }
+        public virtual ICollection<Establishments> Establishments { get; set; }
     }
 }

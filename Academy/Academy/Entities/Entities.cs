@@ -1,4 +1,4 @@
-namespace Academy.Models
+namespace Academy.Entities
 {
     using System;
     using System.Data.Entity;

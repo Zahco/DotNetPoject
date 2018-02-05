@@ -157,28 +157,28 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Academies.cs" />
-    <Compile Include="Models\Classrooms.cs" />
-    <Compile Include="Models\Cycles.cs" />
-    <Compile Include="Models\Entities.cs" />
-    <Compile Include="Models\EntityWithId.cs" />
-    <Compile Include="Models\Establishments.cs" />
-    <Compile Include="Models\Evaluations.cs" />
-    <Compile Include="Models\Levels.cs" />
-    <Compile Include="Models\Periods.cs" />
-    <Compile Include="Models\Pupils.cs" />
-    <Compile Include="Models\Results.cs" />
-    <Compile Include="Models\Tutors.cs" />
-    <Compile Include="Models\Users.cs" />
-    <Compile Include="Models\Years.cs" />
+    <Compile Include="Entities\Academies.cs" />
+    <Compile Include="Entities\Classrooms.cs" />
+    <Compile Include="Entities\Cycles.cs" />
+    <Compile Include="Entities\Entities.cs" />
+    <Compile Include="Entities\EntityWithId.cs" />
+    <Compile Include="Entities\Establishments.cs" />
+    <Compile Include="Entities\Evaluations.cs" />
+    <Compile Include="Entities\Levels.cs" />
+    <Compile Include="Entities\Periods.cs" />
+    <Compile Include="Entities\Pupils.cs" />
+    <Compile Include="Entities\Results.cs" />
+    <Compile Include="Entities\Tutors.cs" />
+    <Compile Include="Entities\Users.cs" />
+    <Compile Include="Entities\Years.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AcademyRepository.cs" />
     <Compile Include="Repositories\ClassroomRepository.cs" />
     <Compile Include="Repositories\EstablishmentRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
-    <Compile Include="WebModels\AcademyModel.cs" />
-    <Compile Include="WebModels\EstablishmentModel.cs" />
+    <Compile Include="Models\AcademyModel.cs" />
+    <Compile Include="Models\EstablishmentModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

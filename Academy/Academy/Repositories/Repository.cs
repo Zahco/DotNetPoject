@@ -1,4 +1,4 @@
-﻿using Academy.Models;
+﻿using Academy.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,9 +11,9 @@ namespace Academy.Repositories
     {
         protected DbSet<E> Entities { get; set; }
 
-        protected Entities DBase { get; set; }
+        protected Entities.Entities DBase { get; set; }
 
-        public Repository(DbSet<E> entities, Entities _dbase)
+        public Repository(DbSet<E> entities, Entities.Entities _dbase)
         {
             Entities = entities;
             DBase = _dbase;

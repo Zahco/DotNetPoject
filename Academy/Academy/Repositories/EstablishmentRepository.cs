@@ -1,4 +1,4 @@
-﻿using Academy.Models;
+﻿using Academy.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ namespace Academy.Repositories
 {
     public class EstablishmentRepository : Repository<Establishments>
     {
-        public EstablishmentRepository(Entities _dbase) : base(_dbase.Establishments, _dbase) { }
+        public EstablishmentRepository(Entities.Entities _dbase) : base(_dbase.Establishments, _dbase) { }
         public Establishments GetByName(string name)
         {
             return All().FirstOrDefault(a => a.Name == name);
