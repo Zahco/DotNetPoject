@@ -59,6 +59,7 @@ namespace Academy.Controllers
             }
 
             esta.Name = model.Name;
+            esta.Academie_Id = model.AcademyId;
             esta.Academies = AcademyRepository.GetByName(model.Academy);
             esta.Address = model.Address;
             esta.PostCode = model.PostCode;

@@ -18,10 +18,10 @@ namespace Academy.Models
         [Required]
         public string Town { get; set; }
 
-        public Guid AcademyId;
+        public Guid AcademyId { get; set; }
 
         [DisplayName("Académie")]
-        [Required]
+        //[Required]
         public string Academy { get; set; }
         [DisplayName("Adresse")]
         [Required]
@@ -30,7 +30,7 @@ namespace Academy.Models
         [Required]
         public string PostCode { get; set; }
         [DisplayName("Responsable")]
-        [Required]
+        //[Required]
         public string Director { get; set; }
 
         [DisplayName("Adresse")]
