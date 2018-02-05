@@ -1,4 +1,5 @@
-﻿using Academy.Models;
+﻿using Academy.Entities;
+using Academy.Models;
 using Academy.Repositories;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Academy.WebModels
+namespace Academy.Models
 {
     public class ClassroomModel : IValidatableObject
     {
@@ -35,7 +36,7 @@ namespace Academy.WebModels
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            var classroomRepository = new ClassroomRepository(new Entities());
+            var classroomRepository = new ClassroomRepository(new Entities.Entities());
             var classroom = classroomRepository.GetByTitle(Title);
             if (classroom!= null && classroom.Id != Id)
             {

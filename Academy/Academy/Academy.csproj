@@ -183,6 +183,7 @@
     <Compile Include="Entities\Tutors.cs" />
     <Compile Include="Entities\Users.cs" />
     <Compile Include="Entities\Years.cs" />
+    <Compile Include="Models\ClassroomModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AcademyRepository.cs" />
     <Compile Include="Repositories\ClassroomRepository.cs" />

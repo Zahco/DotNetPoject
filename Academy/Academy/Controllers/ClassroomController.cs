@@ -1,6 +1,6 @@
-﻿using Academy.Models;
+﻿using Academy.Entities;
+using Academy.Models;
 using Academy.Repositories;
-using Academy.WebModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,7 @@ namespace Academy.Controllers
 
         public ClassroomController()
         {
-            var entities = new Entities();
+            var entities = new Entities.Entities();
             ClassroomRepository = new ClassroomRepository(entities);
             EstablishmentRepository = new EstablishmentRepository(entities);
             UserRepository = new UserRepository(entities);
