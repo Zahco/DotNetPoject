@@ -17,6 +17,9 @@ namespace Academy.Models
         [DisplayName("Ville")]
         [Required]
         public string Town { get; set; }
+
+        public Guid AcademyId;
+
         [DisplayName("Académie")]
         [Required]
         public string Academy { get; set; }
