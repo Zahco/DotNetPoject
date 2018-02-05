@@ -10,13 +10,13 @@ using System.Web.Mvc;
 
 namespace Academy.Controllers
 {
-    public class APIController : Controller
+    public class ApiController : Controller
     {
         public AcademyRepository AcademyRepository { get; }
 
         public EstablishmentRepository EstablishmentRepository { get; }
 
-        public APIController()
+        public ApiController()
         {
             var entities = new Entities.Entities();
             AcademyRepository = new AcademyRepository(entities);

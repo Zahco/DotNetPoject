@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Academy.Models
 {
@@ -17,9 +18,9 @@ namespace Academy.Models
         [DisplayName("Ville")]
         [Required]
         public string Town { get; set; }
-
+        [UIHint("SelectFor")]
+        [AdditionalMetadata("method", "GetAcademies")]
         public Guid AcademyId { get; set; }
-
         [DisplayName("Académie")]
         //[Required]
         public string Academy { get; set; }
@@ -49,6 +50,7 @@ namespace Academy.Models
             {
                 Id = esta.Id,
                 Name = esta.Name,
+                AcademyId = esta.Academies.Id,
                 Academy = esta.Academies.Name,
                 Address = esta.Address,
                 PostCode = esta.PostCode,

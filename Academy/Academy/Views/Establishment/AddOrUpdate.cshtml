@@ -31,31 +31,7 @@
     </p>
     <p>
         @Html.LabelFor(model => model.Academy)
-        <select id="ddlAcademies" name="AcademyId"></select>
+        @Html.EditorFor(model => model.AcademyId)
     </p>
     <p><button type="submit">Sauvegarder</button></p>
-}
-
-@section scripts {
-<script type="text/javascript">
-    $(document).ready(getAcademies());
-
-    function getAcademies() {
-        $.ajax({
-            type: "GET",
-            url: "@Url.Action("GetAcademies", "API")",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            failure: function (response) {
-                alert(response.d);
-            },
-            success: function (data) {
-                for (var i = 0; i < data.length; ++i) {
-                    var opt = new Option(data[i].Name, data[i].Id);
-                    $('#ddlAcademies').append(opt);
-                }
-            }
-        });
-    }
-</script> 
 }

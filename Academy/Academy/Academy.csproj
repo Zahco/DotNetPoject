@@ -161,7 +161,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AcademyController.cs" />
-    <Compile Include="Controllers\APIController.cs" />
+    <Compile Include="Controllers\ApiController.cs" />
     <Compile Include="Controllers\ClassroomController.cs" />
     <Compile Include="Controllers\EstablishmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -183,6 +183,7 @@
     <Compile Include="Entities\Tutors.cs" />
     <Compile Include="Entities\Users.cs" />
     <Compile Include="Entities\Years.cs" />
+    <Compile Include="Helpers\HtmlExtensions.cs" />
     <Compile Include="Models\ClassroomModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AcademyRepository.cs" />
@@ -240,6 +241,7 @@
     <Content Include="Views\Classroom\Get.cshtml" />
     <Content Include="Views\Classroom\GetAll.cshtml" />
     <Content Include="Views\Classroom\AddOrUpdate.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SelectFor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
