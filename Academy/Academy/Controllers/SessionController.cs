@@ -19,14 +19,15 @@ namespace Academy.Controllers
             UserRepository = new UserRepository(entities);
         }
         // GET: LogOn
-        public ActionResult LogOn()
+        public ActionResult LogOn(string ReturnUrl)
         {
             if (GlobalVariables.IsAuthenticated)
                 return Redirect(Url.Action("Index", "Home"));
             return View(new LogOnModel
             {
                 UserName = "USER4",
-                Password = "utilisateur4"
+                Password = "utilisateur4",
+                ReturnUrl = ReturnUrl
             });
         }
 
@@ -39,7 +40,10 @@ namespace Academy.Controllers
             var user = UserRepository.GetByUserNameAndPassword(model.UserName, model.Password);
             GlobalVariables.UserId = user.Id;
 
-            return Redirect(Url.Action("Index", "Home"));
+            if (model.ReturnUrl == "" || model.ReturnUrl == null)
+                return Redirect(Url.Action("Index", "Home"));
+            else
+                return Redirect(model.ReturnUrl);
         }
 
         public ActionResult LogOff()

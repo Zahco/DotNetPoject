@@ -3,6 +3,7 @@
 
 @using (Html.BeginForm("LogOn", "Session", FormMethod.Post))
 {
+    @Html.HiddenFor(m => m.ReturnUrl)
     <p>
         @Html.LabelFor(model => model.UserName)
         @Html.EditorFor(model => model.UserName)

@@ -10,7 +10,7 @@ namespace Academy.Attributes
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             if (!GlobalVariables.IsAuthenticated)
-                filterContext.HttpContext.Response.Redirect("/Session/LogOn");
+                filterContext.HttpContext.Response.Redirect("/Session/LogOn?ReturnUrl=" + filterContext.HttpContext.Request.RawUrl);
         }
 
     }

@@ -17,6 +17,8 @@ namespace Academy.Models
         [DisplayName("Mot de passe")]
         public string Password { get; set; }
 
+        public string ReturnUrl { get; set; }
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var userRepository = new UserRepository(new Entities.Entities());
