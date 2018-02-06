@@ -1,9 +1,25 @@
 ﻿@model IEnumerable<AcademyModel>
 
-<p><a href="@Url.Action("AddOrUpdate", "Academy")">Ajouter</a></p>
+<section class="container-fluid">
+    <div class="row">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.First().Name)</th>
+                    <th><a href="@Url.Action("AddOrUpdate", "Academy")">Ajouter</a></th>
+                </tr>
+            </thead>
 
-@foreach(var academy in Model)
-{
-    <p><a href="@Url.Action("Get", "Academy", new { id = academy.Id })">@academy.Name</a></p>
-}
-
+            <tbody>
+                @foreach (var academy in Model)
+                {
+                    <tr>
+                        <td><a href="@Url.Action("Get", "Academy", new { id = academy.Id })">@academy.Name</a></td>
+                        <td><a href="@Url.Action("AddOrUpdate", "Academy", new { id = academy.Id })">Mettre à jour</a></td>
+                        <td><a href="@Url.Action("Delete", "Academy", new { id = academy.Id })">Supprimer</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>

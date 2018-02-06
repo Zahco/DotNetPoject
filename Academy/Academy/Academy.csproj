@@ -198,6 +198,7 @@
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Models\AcademyModel.cs" />
     <Compile Include="Models\EstablishmentModel.cs" />
+    <Compile Include="Repositories\YearRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

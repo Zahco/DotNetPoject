@@ -66,5 +66,12 @@ namespace Academy.Controllers
 
             return Redirect(Url.Action("Get", "Academy", new { id = academy.Id }));
         }
+        
+        public ActionResult Delete(Guid Id)
+        {        
+            AcademyRepository.Delete(Id);
+            AcademyRepository.Save();
+            return Redirect(Url.Action("GetAll", "Academy"));
+        }
     }
 }

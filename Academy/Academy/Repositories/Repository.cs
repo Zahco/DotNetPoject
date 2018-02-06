@@ -34,7 +34,7 @@ namespace Academy.Repositories
             Entities.Add(entity);
         }
 
-        protected void BeforeDelete(E entity) { }
+        protected virtual void BeforeDelete(E entity) { }
 
         public void Delete(E entity)
         {
