@@ -251,6 +251,10 @@
     <Content Include="Views\Classroom\GetAll.cshtml" />
     <Content Include="Views\Classroom\AddOrUpdate.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\SelectFor.cshtml" />
+    <Content Include="Views\Session\LogOn.cshtml" />
+    <Content Include="Views\Pupil\AddOrUpdate.cshtml" />
+    <Content Include="Views\Pupil\Get.cshtml" />
+    <Content Include="Views\Pupil\GetAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

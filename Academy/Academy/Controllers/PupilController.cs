@@ -29,5 +29,12 @@ namespace Academy.Controllers
             var model = PupilModel.ToModel(PupilRepository.GetById(id));
             return View(model);
         }
+
+        public ActionResult Delete(Guid id)
+        {
+            PupilRepository.Delete(id);
+            PupilRepository.Save();
+            return Redirect(Url.Action("GetAll", "Pupil"));
+        }
     }
 }
