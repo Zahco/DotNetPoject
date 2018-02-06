@@ -17,11 +17,17 @@ namespace Academy.Controllers
 
         public EstablishmentRepository EstablishmentRepository { get; }
 
+        public UserRepository UserRepository { get; }
+
+        public YearRepository YearRepository { get; }
+
         public ApiController()
         {
             var entities = new Entities.Entities();
             AcademyRepository = new AcademyRepository(entities);
             EstablishmentRepository = new EstablishmentRepository(entities);
+            UserRepository = new UserRepository(entities);
+            YearRepository = new YearRepository(entities);
         }
         
         public ActionResult GetAcademies()
@@ -44,5 +50,24 @@ namespace Academy.Controllers
             return Json(establishments, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetUsers()
+        {
+            var users = UserRepository.All().Select(u => new ModelWithNameAndId
+            {
+                Id = u.Id,
+                Name = u.FirstName + " " + u.LastName
+            });
+            return Json(users, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetYears()
+        {
+            var years = YearRepository.All().Select(y => new ModelWithNameAndId
+            {
+                Id = y.Id,
+                Name = y.Year.ToString()
+            });
+            return Json(years, JsonRequestBehavior.AllowGet);
+        }
     }
 }

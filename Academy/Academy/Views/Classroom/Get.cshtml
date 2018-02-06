@@ -2,8 +2,13 @@
 
 <h2>@Model.Title</h2>
 
-<p>@Html.LabelFor(model => model.Title) @Model.Title</p>
-<p>@Html.LabelFor(model => model.Establishments) @Model.Establishments.Name</p>
-
-<p><a href="@Url.Action("AddOrUpdate", "Classroom", new { id = Model.Id })">Modifier</a></p>
+<ul>
+    <li>@Html.LabelFor(model => model.Title) @Model.Title</li>
+    <li>@Html.LabelFor(model => model.Establishments) @Model.Establishments</li>
+    <li>@Html.LabelFor(model => model.User) @Model.User</li>
+    <li>@Html.LabelFor(model => model.Year) @Model.Year</li>
+    <li>
+        <a href="@Url.Action("AddOrUpdate", "Classroom", new { id = Model.Id })">Modifier</a>
+    </li>
+</ul>
 

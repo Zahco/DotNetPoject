@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Academy.Models
 {
@@ -19,18 +20,39 @@ namespace Academy.Models
         [DisplayName("Titre de la salle")]
         public string Title { get; set; }
 
+        [UIHint("SelectFor")]
+        [AdditionalMetadata("method", "GetEstablishments")]
         public Guid Establishment_Id { get; set; }
 
         [DisplayName("Etablissement")]
-        public virtual EstablishmentModel Establishments { get; set; }
+        public string Establishments { get; set; }
 
-        public static ClassroomModel ToModel(Classrooms classrooms)
+        [UIHint("SelectFor")]
+        [AdditionalMetadata("method", "GetUsers")]
+        public Guid UserId { get; set; }
+
+        [DisplayName("Utilisateur")]
+        public string User { get; set; }
+
+        [UIHint("SelectFor")]
+        [AdditionalMetadata("method", "GetYears")]
+        public Guid YearId { get; set; }
+
+        [DisplayName("Année")]
+        public int Year { get; set; }
+
+        public static ClassroomModel ToModel(Classrooms classroom)
         {
             return new ClassroomModel
             {
-                Id = classrooms.Id,
-                Title = classrooms.Title,
-                Establishment_Id = classrooms.Establishment_Id
+                Id = classroom.Id,
+                Title = classroom.Title,
+                Establishment_Id = classroom.Establishment_Id,
+                Establishments = classroom.Establishments.Name,
+                UserId = classroom.User_Id,
+                User = classroom.Users.UserName,
+                YearId = classroom.Year_Id,
+                Year = classroom.Years.Year,
             };
         }
 

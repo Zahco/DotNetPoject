@@ -15,12 +15,15 @@ namespace Academy.Controllers
         public EstablishmentRepository EstablishmentRepository { get; set; }
         public UserRepository UserRepository { get; set; }
 
+        public YearRepository YearRepository { get; set; }
+
         public ClassroomController()
         {
             var entities = new Entities.Entities();
             ClassroomRepository = new ClassroomRepository(entities);
             EstablishmentRepository = new EstablishmentRepository(entities);
             UserRepository = new UserRepository(entities);
+            YearRepository = new YearRepository(entities);
         }
 
         public ActionResult GetAll()
@@ -61,20 +64,25 @@ namespace Academy.Controllers
             classroom.Title = model.Title;
             classroom.Establishment_Id = model.Establishment_Id;
             classroom.Establishments = EstablishmentRepository.GetById(model.Establishment_Id);
-            
-            //TODO : choose a user
-            if (classroom.Users == null)
-            {
-                classroom.Users = UserRepository.All().First();
-            }
+            classroom.User_Id = model.UserId;
+            classroom.Users = UserRepository.GetById(model.UserId);
+            classroom.Year_Id = model.YearId;
+            classroom.Years = YearRepository.GetById(model.YearId);
 
             if (isCreated)
             {
                 ClassroomRepository.Add(classroom);
             }
-            EstablishmentRepository.Save();
+            ClassroomRepository.Save();
 
             return Redirect(Url.Action("Get", "Classroom", new { id = classroom.Id }));
+        }
+
+        public ActionResult Delete(Guid Id)
+        {
+            ClassroomRepository.Delete(Id);
+            ClassroomRepository.Save();
+            return Redirect(Url.Action("GetAll", "Classroom"));
         }
     }
 }
