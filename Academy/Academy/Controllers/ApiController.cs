@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace Academy.Controllers
 {
+    // All methods return IEnumerable<ModelWithNameAndId>
     public class ApiController : Controller
     {
         public AcademyRepository AcademyRepository { get; }
@@ -22,16 +23,24 @@ namespace Academy.Controllers
             AcademyRepository = new AcademyRepository(entities);
             EstablishmentRepository = new EstablishmentRepository(entities);
         }
-
+        
         public ActionResult GetAcademies()
         {
-            var academies = AcademyRepository.All().Select(a => AcademyModel.ToModel(a));
+            var academies = AcademyRepository.All().Select(a => new ModelWithNameAndId
+            { 
+                Id = a.Id,
+                Name = a.Name
+            });
             return Json(academies, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetEstablishments()
         {
-            var establishments = EstablishmentRepository.All().Select(e => EstablishmentModel.ToModel(e));
+            var establishments = EstablishmentRepository.All().Select(e => new ModelWithNameAndId
+            {
+                Id = e.Id,
+                Name = e.Name
+            });
             return Json(establishments, JsonRequestBehavior.AllowGet);
         }
 
