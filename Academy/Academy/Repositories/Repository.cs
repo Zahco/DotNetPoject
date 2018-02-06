@@ -42,6 +42,13 @@ namespace Academy.Repositories
             Entities.Remove(entity);
         }
 
+        public void Delete(Guid Id)
+        {
+            var entity = GetById(Id);
+            BeforeDelete(entity);
+            Entities.Remove(entity);
+        }
+
         public void Save()
         {
             DBase.SaveChanges();
