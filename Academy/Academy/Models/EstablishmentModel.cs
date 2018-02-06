@@ -54,7 +54,6 @@ namespace Academy.Models
             }
         }
 
-
         public static EstablishmentModel ToModel(Establishments esta)
         {
             return new EstablishmentModel

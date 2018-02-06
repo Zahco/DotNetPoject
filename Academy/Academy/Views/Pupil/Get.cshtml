@@ -1,0 +1,19 @@
+﻿@model PupilModel
+
+<h2>@Model.FullName</h2>
+
+<ul>
+    <li>@Model.FullName</li>
+    <li>@Model.Sex</li>
+    <li>@Model.BirthdayDate</li>
+    <li><a href="@Url.Action("Get", "Classroom", new { id = Model.ClassroomId })">@Model.Classrooms</a></li>
+    <li>@Model.Levels</li>
+    <li>@Model.State</li>
+    <li>@Model.Tutor</li>
+    <li><a href="@Url.Action("AddOrUpdate", "Pupil", new { id = Model.Id })">Mettre à jour</a></td>
+    <li><a href="@Url.Action("Delete", "Pupil", new { id = Model.Id })">Supprimer</a></li>
+    <li>
+        <a href="@Url.Action("AddOrUpdate", "Classroom", new { id = Model.Id })">Modifier</a>
+    </li>
+</ul>
+

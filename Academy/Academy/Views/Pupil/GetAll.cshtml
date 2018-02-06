@@ -1,0 +1,38 @@
+﻿@model IEnumerable<PupilModel>
+
+<section class="container-fluid">
+    <div class="row">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.First().FullName)</th>
+                    <th>@Html.DisplayNameFor(m => m.First().Sex)</th>
+                    <th>@Html.DisplayNameFor(m => m.First().BirthdayDate)</th>
+                    <th>@Html.DisplayNameFor(m => m.First().Classrooms)</th>
+                    <th>@Html.DisplayNameFor(m => m.First().Levels)</th>
+                    <th>@Html.DisplayNameFor(m => m.First().State)</th>
+                    <th>@Html.DisplayNameFor(m => m.First().Tutor)</th>
+                    
+                    <th><a href="@Url.Action("AddOrUpdate", "Pupil")">Ajouter</a></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var pupil in Model)
+                {
+                    <tr>
+                        <td><a href="@Url.Action("Get", "Pupil", new { id = pupil.Id })">@pupil.FullName</a></td>
+                        <td>@pupil.Sex</td>
+                        <td>@pupil.BirthdayDate</td>
+                        <td><a href="@Url.Action("Get", "Classroom", new { id = pupil.ClassroomId })">@pupil.Classrooms</a></td>
+                        <td>@pupil.Levels</td>
+                        <td>@pupil.State</td>
+                        <td>@pupil.Tutor</td>
+                        <td><a href="@Url.Action("AddOrUpdate", "Pupil", new { id = pupil.Id })">Mettre à jour</a></td>
+                        <td><a href="@Url.Action("Delete", "Pupil", new { id = pupil.Id })">Supprimer</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
