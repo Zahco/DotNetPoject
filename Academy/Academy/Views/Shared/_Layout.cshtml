@@ -26,6 +26,14 @@
                     <li>@Html.ActionLink("Académies", "GetAll", "Academy")</li>
                     <li>@Html.ActionLink("Classes", "GetAll", "Classroom")</li>
                     <li>@Html.ActionLink("Etablissement", "GetAll", "Establishment")</li>
+                    @if (GlobalVariables.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Déconnexion", "LogOff", "Session")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Connexion", "LogOn", "Session")</li>
+                    }
                 </ul>
             </div>
         </div>
