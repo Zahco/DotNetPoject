@@ -76,5 +76,12 @@ namespace Academy.Controllers
 
             return Redirect(Url.Action("Get", "Establishment", new { id = esta.Id }));
         }
+
+        public ActionResult Delete(Guid Id)
+        {
+            EstablishmentRepository.Delete(Id);
+            EstablishmentRepository.Save();
+            return Redirect(Url.Action("GetAll", "Establishment"));
+        }
     }
 }

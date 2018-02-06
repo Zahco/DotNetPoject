@@ -185,6 +185,7 @@
     <Compile Include="Entities\Years.cs" />
     <Compile Include="Helpers\HtmlExtensions.cs" />
     <Compile Include="Models\ClassroomModel.cs" />
+    <Compile Include="Models\ModelWithNameAndId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AcademyRepository.cs" />
     <Compile Include="Repositories\ClassroomRepository.cs" />
