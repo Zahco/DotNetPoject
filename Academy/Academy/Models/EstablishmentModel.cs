@@ -12,26 +12,37 @@ namespace Academy.Models
     public class EstablishmentModel
     {
         public Guid Id { get; set; }
+
         [DisplayName("Nom")]
         [Required]
         public string Name { get; set; }
+
         [DisplayName("Ville")]
         [Required]
         public string Town { get; set; }
+
         [UIHint("SelectFor")]
         [AdditionalMetadata("method", "GetAcademies")]
         public Guid AcademyId { get; set; }
+
         [DisplayName("Académie")]
         //[Required]
         public string Academy { get; set; }
+
         [DisplayName("Adresse")]
         [Required]
         public string Address { get; set; }
+
         [DisplayName("Code postal")]
         [Required]
         public string PostCode { get; set; }
-        [DisplayName("Responsable")]
+
+        [UIHint("SelectFor")]
+        [AdditionalMetadata("method", "GetDirectors")]
+        public Guid UserId { get; set; }
+
         //[Required]
+        [DisplayName("Responsable")]
         public string Director { get; set; }
 
         [DisplayName("Adresse")]
@@ -55,6 +66,7 @@ namespace Academy.Models
                 Address = esta.Address,
                 PostCode = esta.PostCode,
                 Town = esta.Town,
+                UserId = esta.Users.Id,
                 Director = esta.Users.FirstName + " " + esta.Users.LastName
             };
         }
