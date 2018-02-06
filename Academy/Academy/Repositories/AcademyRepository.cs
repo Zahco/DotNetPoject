@@ -14,5 +14,6 @@ namespace Academy.Repositories
         {
             return All().FirstOrDefault(a => a.Name == name);
         }
+        
     }
 }

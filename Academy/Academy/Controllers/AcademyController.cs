@@ -6,9 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Academy.Attributes;
 
 namespace Academy.Controllers
 {
+
+    [RequiredConnectedUser]
     public class AcademyController : Controller
     {
         public AcademyRepository AcademyRepository { get; set; }
@@ -23,7 +26,7 @@ namespace Academy.Controllers
             var models = AcademyRepository.All().Select(a => AcademyModel.ToModel(a));
             return View(models);
         }
-
+        
         public ActionResult Get(Guid id)
         {
             var academy = AcademyModel.ToModel(AcademyRepository.GetById(id));

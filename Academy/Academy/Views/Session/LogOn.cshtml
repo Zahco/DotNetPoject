@@ -1,0 +1,18 @@
+﻿@model LogOnModel
+
+
+@using (Html.BeginForm("LogOn", "Session", FormMethod.Post))
+{
+    <p>
+        @Html.LabelFor(model => model.UserName)
+        @Html.EditorFor(model => model.UserName)
+        @Html.ValidationMessageFor(model => model.UserName)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.Password)
+        @Html.PasswordFor(model => model.Password)
+        @Html.ValidationMessageFor(model => model.Password)
+    </p>
+
+    <p><button type="submit">Se connecter</button></p>
+}
