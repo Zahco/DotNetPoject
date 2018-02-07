@@ -1,0 +1,54 @@
+﻿@model TutorModel
+@{
+    ViewBag.Title = "AddOrUpdate";
+}
+
+<h2>AddOrUpdate</h2>
+
+@using (Html.BeginForm("AddOrUpdate", "Tutor", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.Id)
+
+    <p>
+        @Html.LabelFor(model => model.FirstName)
+        @Html.EditorFor(model => model.FirstName)
+        @Html.ValidationMessageFor(model => model.FirstName)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.LastName)
+        @Html.EditorFor(model => model.LastName)
+        @Html.ValidationMessageFor(model => model.LastName)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.Address)
+        @Html.EditorFor(model => model.Address)
+        @Html.ValidationMessageFor(model => model.Address)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.PostCode)
+        @Html.EditorFor(model => model.PostCode)
+        @Html.ValidationMessageFor(model => model.PostCode)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.Town)
+        @Html.EditorFor(model => model.Town)
+        @Html.ValidationMessageFor(model => model.Town)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.Tel)
+        @Html.EditorFor(model => model.Tel)
+        @Html.ValidationMessageFor(model => model.Tel)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.Mail)
+        @Html.EditorFor(model => model.Mail)
+        @Html.ValidationMessageFor(model => model.Mail)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.Comment)
+        @Html.EditorFor(model => model.Comment)
+        @Html.ValidationMessageFor(model => model.Comment)
+    </p>
+
+    <p><button type="submit">Sauvegarder</button></p>
+}

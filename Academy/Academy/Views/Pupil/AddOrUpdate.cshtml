@@ -10,21 +10,42 @@
     @Html.HiddenFor(model => model.Id)
 
     <p>
-        @Html.LabelFor(model => model.Title)
-        @Html.EditorFor(model => model.Title)
-        @Html.ValidationMessageFor(model => model.Title)
+        @Html.LabelFor(model => model.FirstName)
+        @Html.EditorFor(model => model.FirstName)
+        @Html.ValidationMessageFor(model => model.FirstName)
     </p>
     <p>
-        @Html.LabelFor(model => model.Establishments)
-        @Html.EditorFor(model => model.Establishment_Id)
+        @Html.LabelFor(model => model.LastName)
+        @Html.EditorFor(model => model.LastName)
+        @Html.ValidationMessageFor(model => model.LastName)
     </p>
     <p>
-        @Html.LabelFor(model => model.User)
-        @Html.EditorFor(model => model.UserId)
+        @Html.LabelFor(model => model.Sex)
+        @Html.DropDownList("Sex",
+            new SelectList(Enum.GetValues(typeof(Gender))),
+            "Sélectionner votre sexe")
     </p>
     <p>
-        @Html.LabelFor(model => model.Year)
-        @Html.EditorFor(model => model.YearId)
+        @Html.LabelFor(model => model.BirthdayDate)
+        @Html.EditorFor(model => model.BirthdayDate)
+        @Html.ValidationMessageFor(model => model.BirthdayDate)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.Levels)
+        @Html.EditorFor(model => model.LevelId)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.State)
+        @Html.EditorFor(model => model.State)
+        @Html.ValidationMessageFor(model => model.State)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.Classrooms)
+        @Html.EditorFor(model => model.ClassroomId)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.Tutor)
+        @Html.EditorFor(model => model.TutorId)
     </p>
 
     <p><button type="submit">Sauvegarder</button></p>

@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Academy.Models
 {
@@ -17,25 +19,32 @@ namespace Academy.Models
         [DisplayName("Nom")]
         public string LastName { get; set; }
 
+        [UIHint("Date")]
         [DisplayName("Date de naissance")]
         public DateTime BirthdayDate { get; set; }
 
         [DisplayName("Sexe")]
-        public short Sex { get; set; }
+        public Gender Sex { get; set; }
 
         [DisplayName("State")]
         public short State { get; set; }
 
+        [UIHint("SelectFor")]
+        [AdditionalMetadata("method", "GetTutors")]
         public Guid TutorId { get; set; }
 
         [DisplayName("Tuteur")]
         public string Tutor { get; set; }
 
+        [UIHint("SelectFor")]
+        [AdditionalMetadata("method", "GetClassrooms")]
         public Guid ClassroomId { get; set; }
 
         [DisplayName("Nom de la classe")]
         public string Classrooms { get; set; }
 
+        [UIHint("SelectFor")]
+        [AdditionalMetadata("method", "GetLevels")]
         public Guid LevelId { get; set; }
 
         [DisplayName("Niveau de scolarité")]
@@ -65,8 +74,14 @@ namespace Academy.Models
                 State = pupil.State,
                 Tutor = pupil.Tutors.FirstName + " " + pupil.Tutors.LastName,
                 TutorId = pupil.Tutor_Id,
-                Sex = pupil.Sex
+                Sex = (Gender) pupil.Sex
             };
         }
+    }
+
+    public enum Gender
+    {
+        MALE,
+        FEMALE
     }
 }
