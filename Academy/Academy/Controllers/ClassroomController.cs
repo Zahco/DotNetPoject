@@ -1,4 +1,5 @@
-﻿using Academy.Entities;
+﻿using Academy.Attributes;
+using Academy.Entities;
 using Academy.Models;
 using Academy.Repositories;
 using System;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 
 namespace Academy.Controllers
 {
+    [RequiredConnectedUser]
     public class ClassroomController : Controller
     {
         public ClassroomRepository ClassroomRepository { get; set; }

@@ -6,9 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Academy.Attributes;
 
 namespace Academy.Controllers
 {
+    [RequiredConnectedUser]
     public class EstablishmentController : Controller
     {
         public EstablishmentRepository EstablishmentRepository { get; set; }
