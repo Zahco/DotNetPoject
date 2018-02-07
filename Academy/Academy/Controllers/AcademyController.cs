@@ -73,5 +73,12 @@ namespace Academy.Controllers
             AcademyRepository.Save();
             return Redirect(Url.Action("GetAll", "Academy"));
         }
+
+        public ActionResult GetByFilter(string filter)
+        {
+            return Json(AcademyRepository.All()
+                .Where(a => a.Name.Contains(filter))
+                .Select(a => a.Id), JsonRequestBehavior.AllowGet);
+        }
     }
 }

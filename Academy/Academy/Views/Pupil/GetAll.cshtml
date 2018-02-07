@@ -1,8 +1,11 @@
 ﻿@model IEnumerable<PupilModel>
-
+@{ 
+    var id = Html.RandomID();
+}
 <section class="container-fluid">
     <div class="row">
-        <table class="table table-striped table-hover">
+        <input type="text" data-filter-id="@id" placeholder="Rechercher"/>
+        <table id="@id" class="table table-striped table-hover" data-filter-url="@Url.Action("GetByFilter", "Pupil")">
             <thead>
                 <tr>
                     <th>@Html.DisplayNameFor(m => m.First().FullName)</th>
@@ -20,7 +23,7 @@
             <tbody>
                 @foreach (var pupil in Model)
                 {
-                    <tr>
+                    <tr id="@pupil.Id">
                         <td><a href="@Url.Action("Get", "Pupil", new { id = pupil.Id })">@pupil.FullName</a></td>
                         <td>@pupil.Sex</td>
                         <td>@pupil.BirthdayDate</td>

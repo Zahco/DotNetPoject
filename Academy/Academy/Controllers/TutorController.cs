@@ -82,5 +82,12 @@ namespace Academy.Controllers
             TutorRepository.Save();
             return Redirect(Url.Action("GetAll", "Tutor"));
         }
+
+        public ActionResult GetByFilter(string filter)
+        {
+            return Json(TutorRepository.All()
+                .Where(t => t.FirstName.Contains(filter) || t.Town.Contains(filter) || t.LastName.Contains(filter) || t.Mail.Contains(filter) || t.Address.Contains(filter) || t.PostCode.Contains(filter))
+                .Select(t => t.Id), JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -84,5 +84,12 @@ namespace Academy.Controllers
             ClassroomRepository.Save();
             return Redirect(Url.Action("GetAll", "Classroom"));
         }
+
+        public ActionResult GetByFilter(string filter)
+        {
+            return Json(ClassroomRepository.All()
+                .Where(c => c.Title.Contains(filter) || c.Years.Year.ToString().Contains(filter) || c.Establishments.Name.Contains(filter))
+                .Select(c => c.Id), JsonRequestBehavior.AllowGet);
+        }
     }
 }

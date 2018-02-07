@@ -1,8 +1,11 @@
 ﻿@model IEnumerable<EstablishmentModel>
-
+@{
+    var id = Html.RandomID();
+}
 <section class="container-fluid">
     <div class="row">
-        <table class="table table-striped table-hover">
+        <input type="text" data-filter-id="@id" placeholder="Rechercher" />
+        <table id="@id" class="table table-striped table-hover" data-filter-url="@Url.Action("GetByFilter", "Establishment")">
             <thead>
                 <tr>
                     <th>@Html.DisplayNameFor(m => m.First().Name)</th>
@@ -13,14 +16,14 @@
             </thead>
 
             <tbody>
-                @foreach (var academy in Model)
+                @foreach (var establishment in Model)
                 {
-                    <tr>
-                        <td><a href="@Url.Action("Get", "Establishment", new { id = academy.Id })">@academy.Name</a></td>
-                        <td><a href="@Url.Action("Get", "Academy", new { id = academy.AcademyId })">@academy.Academy</a></td>
-                        <td>@academy.FullAddress</td>
-                        <td><a href="@Url.Action("AddOrUpdate", "Establishment", new { id = academy.Id })">Mettre à jour</a></td>
-                        <td><a href="@Url.Action("Delete", "Establishment", new { id = academy.Id })">Supprimer</a></td>
+                    <tr id="@establishment.Id">
+                        <td><a href="@Url.Action("Get", "Establishment", new { id = establishment.Id })">@establishment.Name</a></td>
+                        <td><a href="@Url.Action("Get", "Academy", new { id = establishment.AcademyId })">@establishment.Academy</a></td>
+                        <td>@establishment.FullAddress</td>
+                        <td><a href="@Url.Action("AddOrUpdate", "Establishment", new { id = establishment.Id })">Mettre à jour</a></td>
+                        <td><a href="@Url.Action("Delete", "Establishment", new { id = establishment.Id })">Supprimer</a></td>
                     </tr>
                 }
             </tbody>

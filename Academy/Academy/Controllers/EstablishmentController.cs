@@ -83,5 +83,12 @@ namespace Academy.Controllers
             EstablishmentRepository.Save();
             return Redirect(Url.Action("GetAll", "Establishment"));
         }
+
+        public ActionResult GetByFilter(string filter)
+        {
+            return Json(EstablishmentRepository.All()
+                .Where(e => e.Name.Contains(filter) || e.Town.Contains(filter) || e.Academies.Name.Contains(filter))
+                .Select(e => e.Id), JsonRequestBehavior.AllowGet);
+        }
     }
 }

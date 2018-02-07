@@ -90,5 +90,12 @@ namespace Academy.Controllers
 
             return Redirect(Url.Action("Get", "Pupil", new { id = pupil.Id }));
         }
+
+        public ActionResult GetByFilter(string filter)
+        {
+            return Json(PupilRepository.All()
+                .Where(p => p.FirstName.Contains(filter) || p.LastName.Contains(filter))
+                .Select(p => p.Id), JsonRequestBehavior.AllowGet);
+        }
     }
 }
