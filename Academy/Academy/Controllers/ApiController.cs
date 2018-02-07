@@ -15,9 +15,15 @@ namespace Academy.Controllers
     {
         public AcademyRepository AcademyRepository { get; }
 
+        public ClassroomRepository ClassroomRepository{ get; }
+
         public EstablishmentRepository EstablishmentRepository { get; }
 
+        public LevelRepository LevelRepository { get; }
+
         public UserRepository UserRepository { get; }
+
+        public TutorRepository TutorRepository { get; }
 
         public YearRepository YearRepository { get; }
 
@@ -25,8 +31,11 @@ namespace Academy.Controllers
         {
             var entities = new Entities.Entities();
             AcademyRepository = new AcademyRepository(entities);
+            ClassroomRepository = new ClassroomRepository(entities);
             EstablishmentRepository = new EstablishmentRepository(entities);
+            LevelRepository = new LevelRepository(entities);
             UserRepository = new UserRepository(entities);
+            TutorRepository = new TutorRepository(entities);
             YearRepository = new YearRepository(entities);
         }
         
@@ -68,6 +77,36 @@ namespace Academy.Controllers
                 Name = y.Year.ToString()
             });
             return Json(years, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetClassrooms()
+        {
+            var classrooms = ClassroomRepository.All().Select(c => new ModelWithNameAndId
+            {
+                Id = c.Id,
+                Name = c.Title
+            });
+            return Json(classrooms, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetTutors()
+        {
+            var tutors = TutorRepository.All().Select(t => new ModelWithNameAndId
+            {
+                Id = t.Id,
+                Name = t.FirstName + " " + t.LastName
+            });
+            return Json(tutors, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetLevels()
+        {
+            var levels = LevelRepository.All().Select(l => new ModelWithNameAndId
+            {
+                Id = l.Id,
+                Name = l.Title
+            });
+            return Json(levels, JsonRequestBehavior.AllowGet);
         }
     }
 }
