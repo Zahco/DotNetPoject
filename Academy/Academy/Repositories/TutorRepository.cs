@@ -8,6 +8,20 @@ namespace Academy.Repositories
 {
     public class TutorRepository : Repository<Tutors>
     {
-        public TutorRepository(Entities.Entities _dbase) : base(_dbase.Tutors, _dbase) { }
+        private PupilRepository PupilRepository;
+
+        public TutorRepository(Entities.Entities _dbase) : base(_dbase.Tutors, _dbase)
+        {
+            PupilRepository = new PupilRepository(_dbase);
+        }
+
+        protected override void BeforeDelete(Tutors entity)
+        {
+            var pupils = entity.Pupils.ToList();
+            foreach(var pupil in pupils)
+            {
+                PupilRepository.Delete(pupil.Id);
+            }
+        }
     }
 }

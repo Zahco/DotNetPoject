@@ -75,5 +75,12 @@ namespace Academy.Controllers
 
             return Redirect(Url.Action("Get", "Tutor", new { id = tutor.Id }));
         }
+
+        public ActionResult Delete(Guid id)
+        {
+            TutorRepository.Delete(id);
+            TutorRepository.Save();
+            return Redirect(Url.Action("GetAll", "Tutor"));
+        }
     }
 }

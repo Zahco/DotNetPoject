@@ -11,7 +11,8 @@
     </p>
     <p>
         @Html.LabelFor(model => model.Password)
-        @Html.PasswordFor(model => model.Password)
+        @*@Html.PasswordFor(model => model.Password)*@
+        @Html.EditorFor(model => model.Password)
         @Html.ValidationMessageFor(model => model.Password)
     </p>
 
