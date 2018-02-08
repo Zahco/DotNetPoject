@@ -49,12 +49,16 @@ namespace Academy.Controllers
             return Redirect(Url.Action("GetAll", "Pupil"));
         }
 
-        public ActionResult AddOrUpdate(Guid? id)
+        public ActionResult AddOrUpdate(Guid? id, Guid? ClassroomId)
         {
             var model = new PupilModel();
             if (id.HasValue)
             {
                 model = PupilModel.ToModel(PupilRepository.GetById(id.Value));
+            }
+            if (ClassroomId.HasValue)
+            {
+                model.ClassroomId = ClassroomId.Value;
             }
             return View(model);
         }
@@ -74,7 +78,7 @@ namespace Academy.Controllers
 
             pupil.BirthdayDate = model.BirthdayDate;
             pupil.Classrooms = ClassroomRepository.GetById(pupil.Classroom_Id);
-            pupil.Classroom_Id = model.ClassroomId;    
+            pupil.Classroom_Id = model.ClassroomId;
             pupil.FirstName = model.FirstName;
             pupil.LastName = model.LastName;
             pupil.Level_Id = model.LevelId;
