@@ -11,4 +11,17 @@
         <a href="@Url.Action("AddOrUpdate", "Classroom", new { id = Model.Id })">Modifier</a>
     </li>
 </ul>
-
+<h3>Elèves dans la classe</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Nom</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var student in Model.Students)
+        {
+            <tr id="@student.Id"><td><a href="@Url.Action("Get","Pupil", new { Id = student.Id })">@student.Name</a></td></tr>
+        }
+    </tbody>
+</table>
