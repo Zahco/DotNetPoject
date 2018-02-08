@@ -1,36 +1,34 @@
 ﻿@model IEnumerable<TutorModel>
 @{
     var id = Html.RandomID();
+    ViewBag.Title = "Liste des Tuteurs";
 }
-<section class="container-fluid">
-    <div class="row">
-        <input type="text" data-filter-id="@id" placeholder="Rechercher" />
-        <table id="@id" class="table table-striped table-hover" data-filter-url="@Url.Action("GetByFilter", "Tutor")">
-            <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(m => m.First().FullName)</th>
-                    <th>@Html.DisplayNameFor(m => m.First().FullAddress)</th>
-                    <th>@Html.DisplayNameFor(m => m.First().Tel)</th>
-                    <th>@Html.DisplayNameFor(m => m.First().Mail)</th>
-                    <th>@Html.DisplayNameFor(m => m.First().Comment)</th>
-                    <th><a href="@Url.Action("AddOrUpdate", "Tutor")">Ajouter</a></th>
+<section class="row">
+    <table id="@id" class="table table-striped table-hover" data-filter-url="@Url.Action("GetByFilter", "Tutor")">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.First().FullName)</th>
+                <th>@Html.DisplayNameFor(m => m.First().FullAddress)</th>
+                <th>@Html.DisplayNameFor(m => m.First().Tel)</th>
+                <th>@Html.DisplayNameFor(m => m.First().Mail)</th>
+                <th>@Html.DisplayNameFor(m => m.First().Comment)</th>
+                <th><a href="@Url.Action("AddOrUpdate", "Tutor")">Ajouter</a></th>
+                <th><input class="col-lg-3 form-control" type="text" data-filter-id="@id" placeholder="Rechercher" /></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var tutor in Model)
+            {
+                <tr id="@tutor.Id">
+                    <td><a href="@Url.Action("Get", "Tutor", new { id = tutor.Id })">@tutor.FullName</a></td>
+                    <td>@tutor.FullAddress</td>
+                    <td>@tutor.Tel</td>
+                    <td>@tutor.Mail</td>
+                    <td>@tutor.Comment</td>
+                    <td><a href="@Url.Action("AddOrUpdate", "Tutor", new { id = tutor.Id })">Mettre à jour</a></td>
+                    <td><a href="@Url.Action("Delete", "Tutor", new { id = tutor.Id })">Supprimer</a></td>
                 </tr>
-            </thead>
-
-            <tbody>
-                @foreach (var tutor in Model)
-                {
-                    <tr id="@tutor.Id">
-                        <td><a href="@Url.Action("Get", "Tutor", new { id = tutor.Id })">@tutor.FullName</a></td>
-                        <td>@tutor.FullAddress</td>
-                        <td>@tutor.Tel</td>
-                        <td>@tutor.Mail</td>
-                        <td>@tutor.Comment</td>
-                        <td><a href="@Url.Action("AddOrUpdate", "Tutor", new { id = tutor.Id })">Mettre à jour</a></td>
-                        <td><a href="@Url.Action("Delete", "Tutor", new { id = tutor.Id })">Supprimer</a></td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+            }
+        </tbody>
+    </table>
 </section>

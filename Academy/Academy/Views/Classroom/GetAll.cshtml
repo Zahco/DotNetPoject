@@ -1,34 +1,32 @@
 ﻿@model IEnumerable<ClassroomModel>
 @{
     var id = Html.RandomID();
+    ViewBag.Title = "Liste des Classrooms";
 }
-<section class="container-fluid">
-    <div class="row">
-        <input type="text" data-filter-id="@id" placeholder="Rechercher" />
-        <table id="@id" class="table table-striped table-hover" data-filter-url="@Url.Action("GetByFilter", "Classroom")">
-            <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(m => m.First().Title)</th>
-                    <th>@Html.DisplayNameFor(m => m.First().Establishments)</th>
-                    <th>@Html.DisplayNameFor(m => m.First().User)</th>
-                    <th>@Html.DisplayNameFor(m => m.First().Year)</th>
-                    <th><a href="@Url.Action("AddOrUpdate", "Classroom")">Ajouter</a></th>
+<section class="row">
+    <table id="@id" class="table table-striped table-hover" data-filter-url="@Url.Action("GetByFilter", "Classroom")">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.First().Title)</th>
+                <th>@Html.DisplayNameFor(m => m.First().Establishments)</th>
+                <th>@Html.DisplayNameFor(m => m.First().User)</th>
+                <th>@Html.DisplayNameFor(m => m.First().Year)</th>
+                <th><a href="@Url.Action("AddOrUpdate", "Classroom")">Ajouter</a></th>
+                <th><input class="col-lg-3 form-control" type="text" data-filter-id="@id" placeholder="Rechercher" /></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var classroom in Model)
+            {
+                <tr id="@classroom.Id">
+                    <td><a href="@Url.Action("Get", "Classroom", new { id = classroom.Id })">@classroom.Title</a></td>
+                    <td><a href="@Url.Action("Get", "Establishment", new { id = classroom.Establishment_Id})">@classroom.Establishments</a></td>
+                    <td>@classroom.User</td>
+                    <td>@classroom.Year</td>
+                    <td><a href="@Url.Action("AddOrUpdate", "Classroom", new { id = classroom.Id })">Mettre à jour</a></td>
+                    <td><a href="@Url.Action("Delete", "Classroom", new { id = classroom.Id })">Supprimer</a></td>
                 </tr>
-            </thead>
-
-            <tbody>
-                @foreach (var classroom in Model)
-                {
-                    <tr id="@classroom.Id">
-                        <td><a href="@Url.Action("Get", "Classroom", new { id = classroom.Id })">@classroom.Title</a></td>
-                        <td><a href="@Url.Action("Get", "Establishment", new { id = classroom.Establishment_Id})">@classroom.Establishments</a></td>
-                        <td>@classroom.User</td>
-                        <td>@classroom.Year</td>
-                        <td><a href="@Url.Action("AddOrUpdate", "Classroom", new { id = classroom.Id })">Mettre à jour</a></td>
-                        <td><a href="@Url.Action("Delete", "Classroom", new { id = classroom.Id })">Supprimer</a></td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+            }
+        </tbody>
+    </table>
 </section>
