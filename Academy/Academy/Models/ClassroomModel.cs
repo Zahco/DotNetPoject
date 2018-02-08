@@ -41,6 +41,8 @@ namespace Academy.Models
         [DisplayName("Année")]
         public int Year { get; set; }
 
+        public IEnumerable<ModelWithNameAndId> Students { get; set; }
+
         public static ClassroomModel ToModel(Classrooms classroom)
         {
             return new ClassroomModel
@@ -53,6 +55,11 @@ namespace Academy.Models
                 User = classroom.Users.UserName,
                 YearId = classroom.Year_Id,
                 Year = classroom.Years.Year,
+                Students = classroom.Pupils.Select(p => new ModelWithNameAndId
+                {
+                    Id = p.Id,
+                    Name = p.FirstName + " " + p.LastName
+                })
             };
         }
 
@@ -65,5 +72,7 @@ namespace Academy.Models
                 yield return new ValidationResult("Ce titre est déjà utilisé", new[] { "Title" });
             }
         }
+
+        
     }
 }
