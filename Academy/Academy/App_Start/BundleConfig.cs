@@ -27,7 +27,8 @@ namespace Academy
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
             bundles.Add(new ScriptBundle("~/bundles/academyScripts").Include(
-                    "~/Scripts/tableFilter.js"
+                    "~/Scripts/tableFilter.js",
+                    "~/Scripts/form-style-bootstrap.js"
                 ));
         }
     }
