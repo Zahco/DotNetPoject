@@ -1,5 +1,5 @@
 ﻿
-$("[data-filter-id]").change(function () {
+$("[data-filter-id]").on('keyup', function () {
     $this = $(this);
     $filter = $this.val();
     $id = $this.attr("data-filter-id");
