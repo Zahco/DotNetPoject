@@ -26,6 +26,7 @@
                 for (var i = 0; i < data.length; ++i) {
                     var opt = new Option(data[i].Name, data[i].Id);
                     $('#@id').append(opt);
+                    $('#@id').find("[value=@Model]").attr("selected", "true");
                 }
             }
         });
