@@ -1,6 +1,12 @@
 ﻿@model AcademyModel
 
-<h2>@Model.Name</h2>
+<section class="row">
+    <h2>@Model.Name</h2>
+    <p>
+        <button class="btn btn-default">
+            <a href="@Url.Action("AddOrUpdate", "Academy", new { id = Model.Id })">Modifier</a>
+        </button>
+    </p>
+</section>
 
-<p><a href="@Url.Action("AddOrUpdate", "Academy", new { id = Model.Id })">Modifier</a></p>
 
