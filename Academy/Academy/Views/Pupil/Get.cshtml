@@ -1,19 +1,44 @@
 ﻿@model PupilModel
+@{
+    ViewBag.Title = "&Eacute;lève " + Model.FullName;
+}
+<section class="row">
+    <aside class="col-md-12">
+        <h1>Information sur l'élève</h1>
+        <h2>Identité de l'élève</h2>
+        <ul class="list-unstyled">
+            <li>Prénom : @Model.FirstName</li>
+            <li>Nom : @Model.LastName</li>
+            <li>Sexe : @Model.Sex</li>
+            <li>Date de naissance : @Model.BirthdayDate</li>
+        </ul>
 
-<h2>@Model.FullName</h2>
+        <h2>Scolarité</h2>
+        <ul class="list-unstyled">
+            <li>Niveau d'étude : @Model.Levels</li>
+            <li>&Eacute;tat : @Model.State</li>
+            <li>
+                Classe :
+                <a href="@Url.Action("Get", "Classroom", new { id = Model.ClassroomId })">
+                    @Model.Classrooms
+                </a>
+            </li>
+            <li>
+                Tuteur :
+                <a href="@Url.Action("Get", "Tutor", new { id = Model.TutorId })">
+                    @Model.Tutor
+                </a>
+            </li>
+        </ul>
 
-<ul>
-    <li>@Model.FullName</li>
-    <li>@Model.Sex</li>
-    <li>@Model.BirthdayDate</li>
-    <li><a href="@Url.Action("Get", "Classroom", new { id = Model.ClassroomId })">@Model.Classrooms</a></li>
-    <li>@Model.Levels</li>
-    <li>@Model.State</li>
-    <li>@Model.Tutor</li>
-    <li><a href="@Url.Action("AddOrUpdate", "Pupil", new { id = Model.Id })">Mettre à jour</a></td>
-    <li><a href="@Url.Action("Delete", "Pupil", new { id = Model.Id })">Supprimer</a></li>
-    <li>
-        <a href="@Url.Action("AddOrUpdate", "Classroom", new { id = Model.Id })">Modifier</a>
-    </li>
-</ul>
+        <section id="crud-action">
+            <a class="btn btn-default update-link" href="@Url.Action("AddOrUpdate", "Pupil", new { id = Model.Id })" role="button">
+                <i class="glyphicon glyphicon-pencil"></i> Modifier
+            </a>
 
+            <a class="btn btn-danger delete-link" href="@Url.Action("Delete", "Pupil", new { id = Model.Id })" role="button">
+                <i class="glyphicon glyphicon-trash"></i> Supprimer
+            </a>
+        </section>
+    </aside>
+</section>
