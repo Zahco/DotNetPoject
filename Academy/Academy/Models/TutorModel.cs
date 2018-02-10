@@ -35,10 +35,8 @@ namespace Academy.Models
         [DisplayName("Commentaire")]
         public string Comment { get; set; }
 
-        public IEnumerable<Guid> PupilsId { get; set; }
-
         [DisplayName("Elèves")]
-        public IEnumerable<string> Pupils { get; set; }
+        public IEnumerable<ModelWithNameAndId> Pupils { get; set; }
 
         [DisplayName("Identité")]
         public string FullName {  get
@@ -69,8 +67,11 @@ namespace Academy.Models
                 PostCode = tutors.PostCode,
                 Tel = tutors.Tel,
                 Town = tutors.Town,
-                PupilsId = tutors.Pupils.Select(p => p.Id),
-                Pupils = tutors.Pupils.Select(p => p.FirstName + " " + p.LastName)
+                Pupils = tutors.Pupils.Select(p => new ModelWithNameAndId
+                {
+                    Id = p.Id,
+                    Name = p.FirstName + " " + p.LastName
+                })
             };
         }
     }

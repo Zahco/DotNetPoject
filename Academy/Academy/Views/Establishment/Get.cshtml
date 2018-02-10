@@ -50,7 +50,7 @@
                 </thead>
                 <tbody>
                     @foreach (var classroom in Model.Classrooms)
-                {
+                    {
                         <tr id="@classroom.Id">
                             <td>
                                 <a href="@Url.Action("Get","Classroom", new { Id = classroom.Id })">@classroom.Name</a>
