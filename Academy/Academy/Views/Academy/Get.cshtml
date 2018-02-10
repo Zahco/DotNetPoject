@@ -1,11 +1,18 @@
 ﻿@model AcademyModel
+@{
+    ViewBag.Title = "Académie de " + Model.Name;
+}
 
 <section class="row">
-    <h2>@Model.Name</h2>
+    <h1>Académie de @Model.Name</h1>
     <p>
-        <button class="btn btn-default">
-            <a href="@Url.Action("AddOrUpdate", "Academy", new { id = Model.Id })">Modifier</a>
-        </button>
+        <a class="btn btn-default update-link" href="@Url.Action("AddOrUpdate", "Academy", new { id = Model.Id })" role="button">
+            <i class="glyphicon glyphicon-pencil"></i> Modifier
+        </a>
+                
+        <a class="btn btn-danger delete-link" href="@Url.Action("Delete", "Academy", new { id = Model.Id })" role="button">
+            <i class="glyphicon glyphicon-trash"></i> Supprimer
+        </a>
     </p>
 </section>
 
