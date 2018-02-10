@@ -77,7 +77,7 @@ namespace Academy.Controllers
         public ActionResult GetByFilter(string filter)
         {
             return Json(AcademyRepository.All()
-                .Where(a => a.Name.Contains(filter))
+                .Where(a => a.Name.ToUpper().Contains(filter.ToUpper()))
                 .Select(a => a.Id), JsonRequestBehavior.AllowGet);
         }
     }

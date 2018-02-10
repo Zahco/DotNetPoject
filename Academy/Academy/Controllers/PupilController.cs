@@ -95,8 +95,15 @@ namespace Academy.Controllers
 
         public ActionResult GetByFilter(string filter)
         {
+            filter = filter.ToUpper();
             return Json(PupilRepository.All()
-                .Where(p => p.FirstName.Contains(filter) || p.LastName.Contains(filter))
+                .Where(p => 
+                    p.FirstName.ToUpper().Contains(filter) || 
+                    p.LastName.ToUpper().Contains(filter) || 
+                    p.Classrooms.Title.ToUpper().Contains(filter) ||
+                    p.Levels.Title.ToUpper().Contains(filter) ||
+                    p.Tutors.FirstName.ToUpper().Contains(filter) ||
+                    p.Tutors.LastName.ToUpper().Contains(filter))
                 .Select(p => p.Id), JsonRequestBehavior.AllowGet);
         }
     }

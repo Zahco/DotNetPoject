@@ -56,7 +56,7 @@ namespace Academy.Controllers
             var tutor = new Tutors();
             if (!isCreated)
             {
-                tutor = TutorRepository.GetById(model.Id);
+                tutor = TutorRepository.GetById(model.Id);                
             }
 
             tutor.Address = model.Address;
@@ -67,8 +67,7 @@ namespace Academy.Controllers
             tutor.PostCode = model.PostCode;
             tutor.Tel = model.Tel;
             tutor.Town = model.Town;
-            tutor.Pupils = PupilRepository.All().ToList();
-            
+
             if (isCreated)
             {
                 TutorRepository.Add(tutor);
@@ -87,8 +86,15 @@ namespace Academy.Controllers
 
         public ActionResult GetByFilter(string filter)
         {
+            filter = filter.ToUpper();
             return Json(TutorRepository.All()
-                .Where(t => t.FirstName.Contains(filter) || t.Town.Contains(filter) || t.LastName.Contains(filter) || t.Mail.Contains(filter) || t.Address.Contains(filter) || t.PostCode.Contains(filter))
+                .Where(t =>
+                    t.FirstName.Contains(filter) ||
+                    t.Town.Contains(filter) ||
+                    t.LastName.Contains(filter) ||
+                    t.Mail.Contains(filter) ||
+                    t.Address.Contains(filter) ||
+                    t.PostCode.Contains(filter))
                 .Select(t => t.Id), JsonRequestBehavior.AllowGet);
         }
     }

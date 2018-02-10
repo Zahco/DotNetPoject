@@ -52,7 +52,7 @@ namespace Academy.Models
                 Establishment_Id = classroom.Establishment_Id,
                 Establishments = classroom.Establishments.Name,
                 UserId = classroom.User_Id,
-                User = classroom.Users.UserName,
+                User = classroom.Users.FirstName + " " + classroom.Users.LastName,
                 YearId = classroom.Year_Id,
                 Year = classroom.Years.Year,
                 Students = classroom.Pupils.Select(p => new ModelWithNameAndId

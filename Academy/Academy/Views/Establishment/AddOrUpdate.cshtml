@@ -30,6 +30,10 @@
         @Html.ValidationMessageFor(model => model.PostCode)
     </p>
     <p>
+        @Html.LabelFor(model => model.User)
+        @Html.EditorFor(model => model.UserId)
+    </p>
+    <p>
         @Html.LabelFor(model => model.Academy)
         @Html.EditorFor(model => model.AcademyId)
     </p>

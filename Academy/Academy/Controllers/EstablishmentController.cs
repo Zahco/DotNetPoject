@@ -54,29 +54,28 @@ namespace Academy.Controllers
                 return View(model);
 
             var isCreated = model.Id == Guid.Empty;
-            var esta = new Establishments();
+            var establishment = new Establishments();
             if (!isCreated)
             {
-                esta = EstablishmentRepository.GetById(model.Id);
+                establishment = EstablishmentRepository.GetById(model.Id);
             }
 
-            esta.Name = model.Name;
-            esta.Academie_Id = model.AcademyId;
-            esta.Academies = AcademyRepository.GetByName(model.Academy);
-            esta.Address = model.Address;
-            esta.PostCode = model.PostCode;
-            esta.Town = model.Town;
-            //TODO : choose a user
-            if (esta.Users == null)
-                esta.Users = UserRepository.All().First();
+            establishment.Name = model.Name;
+            establishment.Academie_Id = model.AcademyId;
+            establishment.Academies = AcademyRepository.GetByName(model.Academy);
+            establishment.Address = model.Address;
+            establishment.PostCode = model.PostCode;
+            establishment.Town = model.Town;
+            establishment.User_Id = model.UserId;
+            establishment.Users = UserRepository.GetById(model.UserId);
 
             if (isCreated)
             {
-                EstablishmentRepository.Add(esta);
+                EstablishmentRepository.Add(establishment);
             }
             EstablishmentRepository.Save();
 
-            return Redirect(Url.Action("Get", "Establishment", new { id = esta.Id }));
+            return Redirect(Url.Action("Get", "Establishment", new { id = establishment.Id }));
         }
 
         public ActionResult Delete(Guid Id)
@@ -88,8 +87,15 @@ namespace Academy.Controllers
 
         public ActionResult GetByFilter(string filter)
         {
+            filter = filter.ToUpper();
             return Json(EstablishmentRepository.All()
-                .Where(e => e.Name.Contains(filter) || e.Town.Contains(filter) || e.Academies.Name.Contains(filter))
+                .Where(e => 
+                    e.Name.ToUpper().Contains(filter) || 
+                    e.Town.ToUpper().Contains(filter) || 
+                    e.Academies.Name.ToUpper().Contains(filter) ||
+                    e.Address.ToUpper().Contains(filter) ||
+                    e.PostCode.Contains(filter) || 
+                    e.Town.ToUpper().Contains(filter))
                 .Select(e => e.Id), JsonRequestBehavior.AllowGet);
         }
     }
