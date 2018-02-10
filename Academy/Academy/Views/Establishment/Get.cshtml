@@ -1,10 +1,78 @@
 ﻿@model EstablishmentModel
+@{
+    var id = Html.RandomID();
+    ViewBag.Title = "Etablissement " + Model.Name;
+}
 
-<h2>@Model.Name</h2>
+<section class="row">
+    <aside class="col-md-3">
+        <h1>@Model.Name</h1>
+        <ul class="list-unstyled">
+            <li>Adresse : @Model.Address</li>
+            <li>Ville : @Model.Town</li>
+            <li>Code postal : @Model.PostCode</li>
+            <li>
+                Académie de 
+                <a href="@Url.Action("Get", "Academy", new { id = @Model.AcademyId })">
+                    @Model.Academy
+                </a>
+            </li>
+            <li>Directeur : @Model.Director</li>
+        </ul>
 
-<p>@Html.LabelFor(model => model.FullAddress) @Model.FullAddress</p>
-<p>@Html.LabelFor(model => model.Academy) @Model.Academy</p>
-<p>@Html.LabelFor(model => model.Director) @Model.Director</p>
+        <section id="crud-action">
+            <a class="btn btn-default update-link" href="@Url.Action("AddOrUpdate", "Establishment", new { id = Model.Id })" role="button">
+                <i class="glyphicon glyphicon-pencil"></i> Modifier
+            </a>
 
-<p><a href="@Url.Action("AddOrUpdate", "Establishment", new { id = Model.Id })">Modifier</a></p>
+            <a class="btn btn-danger delete-link" href="@Url.Action("Delete", "Establishment", new { id = Model.Id })" role="button">
+                <i class="glyphicon glyphicon-trash"></i> Supprimer
+            </a>
+        </section>
+    </aside>
+
+    <section class="col-md-9">
+        <h2>Classes présente dans l'établissement @Model.Name</h2>
+
+        @if (Model.Classrooms.Count() > 0)
+        {
+            <table id="@id" class="table table-striped table-hover" data-filter-url="@Url.Action("GetByFilter", "Classroom")">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <td align="right">
+                            <div class="input-group">
+                                <input class="form-control" type="text" data-filter-id="@id" placeholder="Rechercher" />
+                                <span class="input-group-addon glyphicon glyphicon-search"></span>
+                            </div>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var classroom in Model.Classrooms)
+                {
+                        <tr id="@classroom.Id">
+                            <td>
+                                <a href="@Url.Action("Get","Classroom", new { Id = classroom.Id })">@classroom.Name</a>
+                            </td>
+
+                            <td align="right">
+                                <a class="update-link" href="@Url.Action("AddOrUpdate", "Classroom", new { id = classroom.Id })" role="button">
+                                    <i class="glyphicon glyphicon-pencil"></i>
+                                </a>
+                                <a class="delete-link" href="@Url.Action("Delete", "Classroom", new { id = classroom.Id })" role="button">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>Aucune classe n'est enregistrées dans l'établissement @Model.Name.</p>
+        }
+    </section>
+</section>
 

@@ -26,7 +26,7 @@ namespace Academy.Models
         public Guid AcademyId { get; set; }
 
         [DisplayName("Académie")]
-        //[Required]
+        [Required]
         public string Academy { get; set; }
 
         [DisplayName("Adresse")]
@@ -41,9 +41,11 @@ namespace Academy.Models
         [AdditionalMetadata("method", "GetDirectors")]
         public Guid UserId { get; set; }
 
-        //[Required]
+        [Required]
         [DisplayName("Responsable")]
         public string Director { get; set; }
+
+        public IEnumerable<ModelWithNameAndId> Classrooms { get; set; }
 
         [DisplayName("Adresse")]
         public string FullAddress
@@ -66,7 +68,12 @@ namespace Academy.Models
                 PostCode = esta.PostCode,
                 Town = esta.Town,
                 UserId = esta.Users.Id,
-                Director = esta.Users.FirstName + " " + esta.Users.LastName
+                Director = esta.Users.FirstName + " " + esta.Users.LastName,
+                Classrooms = esta.Classrooms.Select(c => new ModelWithNameAndId
+                {
+                    Id = c.Id,
+                    Name = c.Title
+                })
             };
         }
     }
