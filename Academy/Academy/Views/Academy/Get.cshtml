@@ -5,7 +5,7 @@
 
 <section class="row">
     <h1>Académie de @Model.Name</h1>
-    <p>
+    <section class="crud-action">
         <a class="btn btn-default update-link" href="@Url.Action("AddOrUpdate", "Academy", new { id = Model.Id })" role="button">
             <i class="glyphicon glyphicon-pencil"></i> Modifier
         </a>
@@ -13,7 +13,7 @@
         <a class="btn btn-danger delete-link" href="@Url.Action("Delete", "Academy", new { id = Model.Id })" role="button">
             <i class="glyphicon glyphicon-trash"></i> Supprimer
         </a>
-    </p>
+    </section>
 </section>
 
 
