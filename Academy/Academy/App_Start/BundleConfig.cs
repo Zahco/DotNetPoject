@@ -9,7 +9,8 @@ namespace Academy
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery.validate.unobtrusive.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -26,10 +27,15 @@ namespace Academy
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            // Custom script for app.
             bundles.Add(new ScriptBundle("~/bundles/academyScripts").Include(
                     "~/Scripts/tableFilter.js",
-                    "~/Scripts/form-style-bootstrap.js"
-                ));
+                    "~/Scripts/form-style-bootstrap.js"));
+
+            // Custom Jquery Validator
+            bundles.Add(new ScriptBundle("~/bundles/custom-form-validator").Include(
+                                  "~/Scripts/custom-jquery-validators"));
         }
     }
 }
