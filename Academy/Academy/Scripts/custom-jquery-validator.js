@@ -50,6 +50,16 @@
                 required: true,
                 maxLength: 50,
             },
+
+            'FirstName': {
+                required: true,
+                maxLength: 50,
+            },
+
+            'LastName': {
+                required: true,
+                maxLength: 50,
+            }
         },
 
         // Messages to show when errors occured.
@@ -78,6 +88,16 @@
                 required: "Le champ Code Postal est requis",
                 maxLength: "Le code postal doit être compris entre 1 et 50 caractères",
             },
+
+            'FirstName': {
+                required: "Le champ Prénom est requis",
+                maxLength: "Le prénom doit être compris entre 1 et 50 caractères",
+            },
+
+            'LastName': {
+                required: "Le champ Nom est requis",
+                maxLength: "Le nom doit être compris entre 1 et 50 caractères",
+            }
         }
     });
 }); 

@@ -13,9 +13,13 @@ namespace Academy.Models
     {
         public Guid Id { get; set; }
 
+        [Required]
+        [StringLength(50)]
         [DisplayName("Prénom")]
         public string FirstName { get; set; }
 
+        [Required]
+        [StringLength(50)]
         [DisplayName("Nom")]
         public string LastName { get; set; }
 
