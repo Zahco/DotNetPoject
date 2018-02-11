@@ -24,7 +24,7 @@
             e.closest('.help-block').remove();
         },
 
-        // Rules 
+        // Rules about each fields present on forms.
         rules: {
             'Name': {
                 required: true,
@@ -59,7 +59,22 @@
             'LastName': {
                 required: true,
                 maxLength: 50,
-            }
+            },
+
+            'Tel': {
+                required: true,
+                maxLength: 50,
+            },
+
+            'Mail': {
+                required: true,
+                email: true,
+                maxLength: 50,
+            },
+
+            'Comment': {
+                maxLength: 1000,
+            },
         },
 
         // Messages to show when errors occured.
@@ -97,7 +112,22 @@
             'LastName': {
                 required: "Le champ Nom est requis",
                 maxLength: "Le nom doit être compris entre 1 et 50 caractères",
-            }
+            },
+
+            'Tel': {
+                required: "Le chmap Téléphone est requis",
+                maxLength: "Le téléphone doit être compris entre 1 et 50 caractères",
+            },
+
+            'Mail': {
+                required: "Le champs email est requis",
+                email: "Le format de l'adresse mail est incorrect",
+                maxLength: "L'email doit être compris entre 1 et 50 caractères",
+            },
+
+            'Comment': {
+                maxLength: "Le commentaire doit être compris entre 0 et 1000 caractères",
+            },
         }
     });
 }); 
