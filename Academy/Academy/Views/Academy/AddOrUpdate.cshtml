@@ -1,6 +1,13 @@
 ﻿@model AcademyModel
 @{
-    ViewBag.Title = "Ajout d'une Académie";
+    if (Model.Id == Guid.Empty)
+    {
+        ViewBag.Title = "Ajout d'une Académie";
+    }
+    else
+    {
+        ViewBag.Title = "Modification de l'académie de " + Model.Name;
+    }
 }
 
 <section class="row">
@@ -22,8 +29,8 @@
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Name)
-                @Html.EditorFor(model => model.Name, new { aria_describedby = "nameHelpText" })
-                <div id="nameHelpText" class="help-block">@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })</div>
+                @Html.EditorFor(model => model.Name, new { aria_describedby = "name-help-text" })
+                <div id="name-help-text" class="help-block">@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })</div>
             </div>
 
             <div class="form-group">

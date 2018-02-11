@@ -30,7 +30,12 @@
                 required: true,
                 minLength: 1,
                 maxLength: 5,
-            },            
+            },          
+
+            'Title': {
+                required: true,
+                maxLength: 50,
+            },
         },
 
         // Messages to show when errors occured.
@@ -38,7 +43,12 @@
             'Name': {
                 required: "Le champ Nom de l'académie est requis",
                 minLength: "Le nom de l'académie doit contenir au moins 1 caractère",
-                maxLength: "Le nom de l'académie doit contenir moins de 255 caractères,
+                maxLength: "Le nom de l'académie doit contenir moins de 100 caractères",
+            },
+
+            'Title': {
+                required: "Le titre de la salle est requis",
+                maxLength: "Le titre de la classe doit être compris entre 1 et 50 caractères",
             }
         }
     });

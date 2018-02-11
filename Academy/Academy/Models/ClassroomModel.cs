@@ -72,7 +72,5 @@ namespace Academy.Models
                 yield return new ValidationResult("Ce titre est déjà utilisé", new[] { "Title" });
             }
         }
-
-        
     }
 }
