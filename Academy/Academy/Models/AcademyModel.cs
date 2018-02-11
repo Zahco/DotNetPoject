@@ -14,7 +14,7 @@ namespace Academy.Models
         public Guid Id { get; set; }
         
         [Required]
-        [StringLength(100, ErrorMessage = "Le nom de l'académie doit être compris entre {2} et {1}", MinimumLength = 1)]
+        [StringLength(50)]
         [DisplayName("Nom de l'académie")]
         public string Name { get; set; }
 

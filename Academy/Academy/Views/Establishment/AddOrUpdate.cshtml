@@ -1,41 +1,66 @@
 ﻿@model EstablishmentModel
 @{
-    ViewBag.Title = "AddOrUpdate";
+    if (Model.Id == Guid.Empty)
+    {
+        ViewBag.Title = "Ajout d'un établissement";
+    }
+    else
+    {
+        ViewBag.Title = "Modification de l'établissement " + Model.Name;
+    }
 }
 
-<h2>AddOrUpdate</h2>
+<section class="row">
+    <div class="col-md-12">
+        @if (Model.Id == Guid.Empty)
+        {
+            <h1>Ajout d'un nouvel établissement</h1>
+        }
+        else
+        {
+            <h1>Modification de l'établissement : @Model.Name</h1>
+        }
 
-@using (Html.BeginForm("AddOrUpdate", "Establishment", FormMethod.Post))
-{
-    @Html.HiddenFor(model => model.Id)
+        @using (Html.BeginForm("AddOrUpdate", "Establishment", FormMethod.Post, new { @id = "form-add-update", role = "form" }))
+        {
+            HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
 
-    <p>
-        @Html.LabelFor(model => model.Name)
-        @Html.EditorFor(model => model.Name)
-        @Html.ValidationMessageFor(model => model.Name)
-    </p>
-    <p>
-        @Html.LabelFor(model => model.Address)
-        @Html.EditorFor(model => model.Address)
-        @Html.ValidationMessageFor(model => model.Address)
-    </p>
-    <p>
-        @Html.LabelFor(model => model.Town)
-        @Html.EditorFor(model => model.Town)
-        @Html.ValidationMessageFor(model => model.Town)
-    </p>
-    <p>
-        @Html.LabelFor(model => model.PostCode)
-        @Html.EditorFor(model => model.PostCode)
-        @Html.ValidationMessageFor(model => model.PostCode)
-    </p>
-    <p>
-        @Html.LabelFor(model => model.User)
-        @Html.EditorFor(model => model.UserId)
-    </p>
-    <p>
-        @Html.LabelFor(model => model.Academy)
-        @Html.EditorFor(model => model.AcademyId)
-    </p>
-    <p><button type="submit">Sauvegarder</button></p>
-}
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name)
+                @Html.EditorFor(model => model.Name, new { aria_describedby = "name-help-text" })
+                <div id="name-help-text" class="help-block">@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })</div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Address)
+                @Html.EditorFor(model => model.Address, new { aria_describedby = "address-help-text" })
+                <div id="address-help-text" class="help-block">@Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })</div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Town)
+                @Html.EditorFor(model => model.Town, new { aria_describedby = "town-help-text" })
+                <div id="town-help-text" class="help-block">@Html.ValidationMessageFor(model => model.Town, "", new { @class = "text-danger" })</div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.PostCode)
+                @Html.EditorFor(model => model.PostCode, new { aria_describedby = "postcode-help-text" })
+                <div id="postcode-help-text" class="help-block">@Html.ValidationMessageFor(model => model.PostCode, "", new { @class = "text-danger" })</div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.User)
+                @Html.EditorFor(model => model.UserId)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Academy)
+                @Html.EditorFor(model => model.AcademyId)
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Sauvegarder</button>
+            </div>
+        }
+    </div>
+</section>

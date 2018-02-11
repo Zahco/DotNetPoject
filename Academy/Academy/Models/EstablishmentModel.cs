@@ -13,12 +13,14 @@ namespace Academy.Models
     {
         public Guid Id { get; set; }
 
-        [DisplayName("Nom")]
         [Required]
+        [StringLength(255)]
+        [DisplayName("Nom")]
         public string Name { get; set; }
 
-        [DisplayName("Ville")]
         [Required]
+        [StringLength(50)]
+        [DisplayName("Ville")]
         public string Town { get; set; }
 
         [UIHint("SelectFor")]
@@ -28,12 +30,14 @@ namespace Academy.Models
         [DisplayName("Académie")]
         public string Academy { get; set; }
 
-        [DisplayName("Adresse")]
         [Required]
+        [StringLength(255)]
+        [DisplayName("Adresse")]
         public string Address { get; set; }
 
-        [DisplayName("Code postal")]
         [Required]
+        [StringLength(50)]
+        [DisplayName("Code postal")]
         public string PostCode { get; set; }
 
         [UIHint("SelectFor")]
