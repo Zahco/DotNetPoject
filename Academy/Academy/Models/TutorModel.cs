@@ -1,4 +1,5 @@
 ﻿using Academy.Entities;
+using Academy.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,7 @@ using System.Web;
 
 namespace Academy.Models
 {
-    public class TutorModel
+    public class TutorModel : IValidatableObject
     {
         public Guid Id { get; set; }
 
@@ -30,6 +31,7 @@ namespace Academy.Models
         [Required]
         [StringLength(50)]
         [DisplayName("Code Postal")]
+        [DataType(DataType.PostalCode)]
         public string PostCode { get; set; }
 
         [Required]
@@ -91,6 +93,21 @@ namespace Academy.Models
                     Name = p.FirstName + " " + p.LastName
                 })
             };
+        }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            var isValidPostCode = ValidationHelper.IsValidPostCode(PostCode);
+            if (!isValidPostCode)
+            {
+                yield return new ValidationResult("Le code postal ne possède pas le bon format", new[] { "PostCode" });
+            }
+
+            var isValidPhoneNumber = ValidationHelper.IsValidPhoneNumber(Tel);
+            if (!isValidPhoneNumber)
+            {
+                yield return new ValidationResult("Le numéro de téléphone ne possède pas le bon format", new[] { "Tel" });
+            }
         }
     }
 }

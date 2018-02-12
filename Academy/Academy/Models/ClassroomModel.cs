@@ -15,8 +15,8 @@ namespace Academy.Models
     {
         public Guid Id { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage = "Le champ Titre est requis")]
+        [StringLength(50, ErrorMessage = "Le nom de la classe doit être compris entre 1 et 50 charactères")]
         [DisplayName("Titre de la salle")]
         public string Title { get; set; }
 
@@ -67,9 +67,15 @@ namespace Academy.Models
         {
             var classroomRepository = new ClassroomRepository(new Entities.Entities());
             var classroom = classroomRepository.GetByTitle(Title);
-            if (classroom!= null && classroom.Id != Id)
+            if (classroom != null && classroom.Id != Id)
             {
-                yield return new ValidationResult("Ce titre est déjà utilisé", new[] { "Title" });
+                yield return new ValidationResult("Cette classe est déjà enregistré dans le système", new[] { "Title" });
+            }
+
+            var establishmentId = classroomRepository.GetByEstablishment(Establishment_Id);
+            if (classroom.Establishments != establishmentId)
+            {
+                yield return new ValidationResult("Cette classe est déjà présente dans l'établissement", new[] { "Establishments" });
             }
         }
     }

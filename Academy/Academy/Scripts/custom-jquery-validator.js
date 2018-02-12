@@ -76,58 +76,5 @@
                 maxLength: 1000,
             },
         },
-
-        // Messages to show when errors occured.
-        messages: {
-            'Name': {
-                required: "Le champ Nom est requis",
-                maxLength: "Le nom doit être compris entre 1 et 255 caractères",
-            },
-
-            'Title': {
-                required: "Le champ Titre est requis",
-                maxLength: "Le titre de la classe doit être compris entre 1 et 50 caractères",
-            },
-
-            'Address': {
-                required: "Le champ Adresse est requis",
-                maxLength: "L'adresse doit être compris entre 1 et 255 caractères",
-            },
-
-            'Town': {
-                required: "Le champ Ville est requis",
-                maxLength: "La ville doit être compris entre 1 et 50 caractères",
-            },
-
-            'PostCode': {
-                required: "Le champ Code Postal est requis",
-                maxLength: "Le code postal doit être compris entre 1 et 50 caractères",
-            },
-
-            'FirstName': {
-                required: "Le champ Prénom est requis",
-                maxLength: "Le prénom doit être compris entre 1 et 50 caractères",
-            },
-
-            'LastName': {
-                required: "Le champ Nom est requis",
-                maxLength: "Le nom doit être compris entre 1 et 50 caractères",
-            },
-
-            'Tel': {
-                required: "Le chmap Téléphone est requis",
-                maxLength: "Le téléphone doit être compris entre 1 et 50 caractères",
-            },
-
-            'Mail': {
-                required: "Le champs email est requis",
-                email: "Le format de l'adresse mail est incorrect",
-                maxLength: "L'email doit être compris entre 1 et 50 caractères",
-            },
-
-            'Comment': {
-                maxLength: "Le commentaire doit être compris entre 0 et 1000 caractères",
-            },
-        }
     });
 }); 

@@ -187,6 +187,7 @@
     <Compile Include="Entities\Users.cs" />
     <Compile Include="Entities\Years.cs" />
     <Compile Include="Helpers\HtmlExtensions.cs" />
+    <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Models\ClassroomModel.cs" />
     <Compile Include="Models\GlobalVariables.cs" />
     <Compile Include="Models\LogOnModel.cs" />

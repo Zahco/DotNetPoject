@@ -1,15 +1,18 @@
 ﻿using Academy.Entities;
+using Academy.Helpers;
+using Academy.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
 namespace Academy.Models
 {
-    public class EstablishmentModel
+    public class EstablishmentModel : IValidatableObject
     {
         public Guid Id { get; set; }
 
@@ -38,6 +41,7 @@ namespace Academy.Models
         [Required]
         [StringLength(50)]
         [DisplayName("Code postal")]
+        [DataType(DataType.PostalCode)]
         public string PostCode { get; set; }
 
         [UIHint("SelectFor")]
@@ -77,6 +81,22 @@ namespace Academy.Models
                     Name = c.Title
                 })
             };
+        }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            var establishmentRepository = new EstablishmentRepository(new Entities.Entities());
+            var establishment = establishmentRepository.GetByName(Name);
+            if (establishment != null && establishment.Id != Id && establishment.Academies.Name != Academy)
+            {
+                yield return new ValidationResult("Cette établissement est déjà présent dans cette académie.", new[] { "Name" });
+            }
+
+            var isPostCode = ValidationHelper.IsValidPostCode(PostCode);
+            if (!isPostCode)
+            {
+                yield return new ValidationResult("Le code postal ne possède pas le bon format", new[] { "PostCode" });
+            }
         }
     }
 }

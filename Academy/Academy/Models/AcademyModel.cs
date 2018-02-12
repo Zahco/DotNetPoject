@@ -13,8 +13,8 @@ namespace Academy.Models
     {
         public Guid Id { get; set; }
         
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage = "Le champ nom est obligatoire")]
+        [StringLength(50, ErrorMessage = "Le nom doit être compris entre 1 et 50 caractères")]
         [DisplayName("Nom de l'académie")]
         public string Name { get; set; }
 
