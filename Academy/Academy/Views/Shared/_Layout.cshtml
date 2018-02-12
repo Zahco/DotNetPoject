@@ -22,10 +22,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
                     <li>@Html.ActionLink("Académies", "GetAll", "Academy")</li>
-                    <li>@Html.ActionLink("Classes", "GetAll", "Classroom")</li>
                     <li>@Html.ActionLink("Etablissement", "GetAll", "Establishment")</li>
+                    <li>@Html.ActionLink("Classes", "GetAll", "Classroom")</li>
                     <li>@Html.ActionLink("Elèves", "GetAll", "Pupil")</li>
                     <li>@Html.ActionLink("Tuteurs", "GetAll", "Tutor")</li>
                     @if (GlobalVariables.IsAuthenticated)

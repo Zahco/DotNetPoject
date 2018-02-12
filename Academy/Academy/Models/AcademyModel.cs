@@ -18,6 +18,7 @@ namespace Academy.Models
         [DisplayName("Nom de l'académie")]
         public string Name { get; set; }
 
+        [DisplayName("Nom de l'établissement")]
         public IEnumerable<ModelWithNameAndId> Establishments { get; set; }
 
 

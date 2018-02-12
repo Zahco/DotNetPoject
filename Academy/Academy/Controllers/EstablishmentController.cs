@@ -40,6 +40,7 @@ namespace Academy.Controllers
         public ActionResult AddOrUpdate(Guid? id, Guid? AcademyId)
         {
             var model = new EstablishmentModel();
+            model.UserId = GlobalVariables.UserId;
             if (id.HasValue)
             {
                 model = EstablishmentModel.ToModel(EstablishmentRepository.GetById(id.Value));
@@ -48,6 +49,7 @@ namespace Academy.Controllers
             {
                 model.AcademyId = AcademyId.Value;
             }
+
             return View(model);
         }
 
