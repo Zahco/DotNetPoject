@@ -40,12 +40,16 @@ namespace Academy.Controllers
             return View(model);
         }
 
-        public ActionResult AddOrUpdate(Guid? id)
+        public ActionResult AddOrUpdate(Guid? id, Guid? EstablishmentId)
         {
             var model = new ClassroomModel();
             if (id.HasValue)
             {
                 model = ClassroomModel.ToModel(ClassroomRepository.GetById(id.Value));
+            }
+            if (EstablishmentId.HasValue)
+            {
+                model.Establishment_Id = EstablishmentId.Value;
             }
             return View(model);
         }

@@ -37,13 +37,19 @@ namespace Academy.Controllers
             return View(model);
         }
 
-        public ActionResult AddOrUpdate(Guid? id)
+        public ActionResult AddOrUpdate(Guid? id, Guid? AcademyId)
         {
             var model = new EstablishmentModel();
+            model.UserId = GlobalVariables.UserId;
             if (id.HasValue)
             {
                 model = EstablishmentModel.ToModel(EstablishmentRepository.GetById(id.Value));
             }
+            if (AcademyId.HasValue)
+            {
+                model.AcademyId = AcademyId.Value;
+            }
+
             return View(model);
         }
 

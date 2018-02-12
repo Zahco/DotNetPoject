@@ -165,6 +165,7 @@
     <Compile Include="Controllers\ApiController.cs" />
     <Compile Include="Controllers\ClassroomController.cs" />
     <Compile Include="Controllers\EstablishmentController.cs" />
+    <Compile Include="Controllers\EvaluationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PupilController.cs" />
     <Compile Include="Controllers\SessionController.cs" />
@@ -189,6 +190,7 @@
     <Compile Include="Helpers\HtmlExtensions.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Models\ClassroomModel.cs" />
+    <Compile Include="Models\EvaluationModel.cs" />
     <Compile Include="Models\GlobalVariables.cs" />
     <Compile Include="Models\LogOnModel.cs" />
     <Compile Include="Models\ModelWithNameAndId.cs" />
@@ -198,6 +200,7 @@
     <Compile Include="Repositories\AcademyRepository.cs" />
     <Compile Include="Repositories\ClassroomRepository.cs" />
     <Compile Include="Repositories\EstablishmentRepository.cs" />
+    <Compile Include="Repositories\EvaluationRepository.cs" />
     <Compile Include="Repositories\LevelRepository.cs" />
     <Compile Include="Repositories\PupilRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
@@ -264,6 +267,7 @@
     <Content Include="Views\Tutor\AddOrUpdate.cshtml" />
     <Content Include="Views\Tutor\Get.cshtml" />
     <Content Include="Views\Tutor\GetAll.cshtml" />
+    <Content Include="Views\Evaluation\GetAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

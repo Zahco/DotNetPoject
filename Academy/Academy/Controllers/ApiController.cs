@@ -71,7 +71,7 @@ namespace Academy.Controllers
 
         public ActionResult GetYears()
         {
-            var years = YearRepository.All().Select(y => new ModelWithNameAndId
+            var years = YearRepository.All().OrderByDescending(y => y.Year).Select(y => new ModelWithNameAndId
             {
                 Id = y.Id,
                 Name = y.Year.ToString()
@@ -101,7 +101,7 @@ namespace Academy.Controllers
 
         public ActionResult GetLevels()
         {
-            var levels = LevelRepository.All().Select(l => new ModelWithNameAndId
+            var levels = LevelRepository.All().OrderBy(l => l.Cycles.Title).ThenBy(l => l.Title).Select(l => new ModelWithNameAndId
             {
                 Id = l.Id,
                 Name = l.Title

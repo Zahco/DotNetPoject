@@ -18,13 +18,17 @@ namespace Academy.Models
         [DisplayName("Nom de l'académie")]
         public string Name { get; set; }
 
+        [DisplayName("Nom de l'établissement")]
+        public IEnumerable<ModelWithNameAndId> Establishments { get; set; }
+
 
         public static AcademyModel ToModel(Academies academies)
         {
             return new AcademyModel
             {
                 Id = academies.Id,
-                Name = academies.Name
+                Name = academies.Name,
+                Establishments = academies.Establishments.Select(e => new ModelWithNameAndId { Id = e.Id, Name = e.Name })
             };
         }
 
