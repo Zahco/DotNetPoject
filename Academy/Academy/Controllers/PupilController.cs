@@ -49,7 +49,7 @@ namespace Academy.Controllers
             return Redirect(Url.Action("GetAll", "Pupil"));
         }
 
-        public ActionResult AddOrUpdate(Guid? id, Guid? ClassroomId)
+        public ActionResult AddOrUpdate(Guid? id, Guid? ClassroomId, Guid? TutorId)
         {
             var model = new PupilModel();
             if (id.HasValue)
@@ -59,6 +59,10 @@ namespace Academy.Controllers
             if (ClassroomId.HasValue)
             {
                 model.ClassroomId = ClassroomId.Value;
+            }
+            if (TutorId.HasValue)
+            {
+                model.TutorId = TutorId.Value;
             }
             return View(model);
         }

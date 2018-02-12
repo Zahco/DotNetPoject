@@ -101,7 +101,7 @@ namespace Academy.Controllers
 
         public ActionResult GetLevels()
         {
-            var levels = LevelRepository.All().Select(l => new ModelWithNameAndId
+            var levels = LevelRepository.All().OrderBy(l => l.Cycles.Title).ThenBy(l => l.Title).Select(l => new ModelWithNameAndId
             {
                 Id = l.Id,
                 Name = l.Title
