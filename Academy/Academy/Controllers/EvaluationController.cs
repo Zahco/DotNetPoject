@@ -17,6 +17,7 @@ namespace Academy.Controllers
         public EvaluationRepository EvaluationRepository { get; set; }
         public ClassroomRepository ClassroomRepository { get; set; }
         public UserRepository UserRepository { get; set; }
+        public PeriodRepository PeriodRepository { get; set; }
 
         public EvaluationController()
         {
@@ -24,6 +25,7 @@ namespace Academy.Controllers
             EvaluationRepository = new EvaluationRepository(entities);
             ClassroomRepository = new ClassroomRepository(entities);
             UserRepository = new UserRepository(entities);
+            PeriodRepository = new PeriodRepository(entities);
         }
 
         public ActionResult GetAll()
@@ -71,6 +73,7 @@ namespace Academy.Controllers
             evaluation.User_Id = model.UserId;
             evaluation.Users = UserRepository.GetById(model.UserId);
             evaluation.TotalPoint = model.TotalPoint;
+            evaluation.Periods = PeriodRepository.GetById(model.PeriodId);
 
             if (isCreated)
             {

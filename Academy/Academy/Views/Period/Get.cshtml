@@ -8,8 +8,8 @@
     <aside class="col-md-3">
         <h1>Période</h1>
         <ul class="list-unstyled">
-            <li>Date de début : @Model.Begin</li>
-            <li>Date de fin : @Model.End</li>
+            <li>Date de début : @Model.Begin.ToShortDateString()</li>
+            <li>Date de fin : @Model.End.ToShortDateString()</li>
             <li>Année scolaire : @Model.Year.Name</li>
         </ul>
 

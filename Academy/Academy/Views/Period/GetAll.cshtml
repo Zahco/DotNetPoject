@@ -34,10 +34,10 @@
             {
                 <tr id="@period.Id">
                     <td>
-                        <a href="@Url.Action("Get", "Period", new { id = period.Id })">@period.Begin</a>
+                        <a href="@Url.Action("Get", "Period", new { id = period.Id })">@period.Begin.ToShortDateString()</a>
                     </td>
                     <td>
-                        <a href="@Url.Action("Get", "Period", new { id = period.Id })">@period.End</a>
+                        <a href="@Url.Action("Get", "Period", new { id = period.Id })">@period.End.ToShortDateString()</a>
                     </td>
                     <td>
                        @period.Year.Name

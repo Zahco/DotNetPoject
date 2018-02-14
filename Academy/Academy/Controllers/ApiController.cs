@@ -117,7 +117,7 @@ namespace Academy.Controllers
             var periods = PeriodRepository.All().Select(p => new ModelWithNameAndId
             {
                 Id = p.Id,
-                Name = p.Begin.Date + "-" + p.End.Date,
+                Name = p.Begin.Date.ToShortDateString() + " - " + p.End.Date.ToShortDateString(),
             });
             return Json(periods, JsonRequestBehavior.AllowGet);
         }

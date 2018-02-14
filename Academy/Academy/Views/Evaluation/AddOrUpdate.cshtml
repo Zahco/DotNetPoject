@@ -50,6 +50,12 @@
             </div>
 
             <div class="form-group">
+                @Html.LabelFor(model => model.PeriodId)
+                @Html.EditorFor(model => model.PeriodId, new { aria_describedby = "date-help-text" })
+                <div id="date-help-text" class="help-block">@Html.ValidationMessageFor(model => model.PeriodId, "", new { @class = "text-danger" })</div>
+            </div>
+
+            <div class="form-group">
                 <button class="btn btn-default" type="submit">Sauvegarder</button>
             </div>
         }

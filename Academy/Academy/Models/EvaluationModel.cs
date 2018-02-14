@@ -6,10 +6,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Academy.Repositories;
 
 namespace Academy.Models
 {
-    public class EvaluationModel
+    public class EvaluationModel : IValidatableObject
     {
         public Guid Id { get; set; }
 
@@ -29,10 +30,10 @@ namespace Academy.Models
 
         [UIHint("SelectFor")]
         [AdditionalMetadata("method", "GetPeriods")]
+        [DisplayName("Période")]
         public Guid PeriodId { get; set; }
 
         [Required]
-        [UIHint("Date")]
         [DisplayName("Date")]
         public DateTime Date { get; set; }
 
@@ -68,6 +69,16 @@ namespace Academy.Models
                     Name = evaluations.Users.FirstName + " " + evaluations.Users.LastName
                 },
             };
+        }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            var PeriodRepository = new PeriodRepository(new Entities.Entities());
+            var period = PeriodRepository.GetById(PeriodId);
+            if (Date < period.Begin || Date > period.End)
+            {
+                yield return new ValidationResult("La date doit être comprise dans la période", new string[] { "Date" });
+            }
         }
     }
 }
