@@ -43,6 +43,7 @@ namespace Academy.Controllers
         public ActionResult AddOrUpdate(Guid? Id)
         {
             var model = new EvaluationModel();
+            model.Date = DateTime.Now;
             if (Id.HasValue)
             {
                 model = EvaluationModel.ToModel(EvaluationRepository.GetById(Id.Value));
