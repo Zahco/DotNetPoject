@@ -40,13 +40,17 @@ namespace Academy.Controllers
             return View(model);
         }
 
-        public ActionResult AddOrUpdate(Guid? Id)
+        public ActionResult AddOrUpdate(Guid? Id, Guid? ClassroomId)
         {
             var model = new EvaluationModel();
             model.Date = DateTime.Now;
             if (Id.HasValue)
             {
                 model = EvaluationModel.ToModel(EvaluationRepository.GetById(Id.Value));
+            }
+            if (ClassroomId.HasValue)
+            {
+                model.ClassroomId = ClassroomId.Value;
             }
 
             return View(model);

@@ -47,6 +47,8 @@ namespace Academy.Models
         [DisplayName("Professeur")]
         public ModelWithNameAndId UserWithNameAndId { get; set; }
 
+        public IEnumerable<ModelWithNameAndId> Results { get; set; }
+
         public static EvaluationModel ToModel(Evaluations evaluations)
         {
             return new EvaluationModel
@@ -68,7 +70,8 @@ namespace Academy.Models
                     Id = evaluations.Users.Id,
                     Name = evaluations.Users.FirstName + " " + evaluations.Users.LastName
                 },
-                PeriodId = evaluations.Period_Id
+                PeriodId = evaluations.Period_Id,
+                Results = evaluations.Results.Select(r => new ModelWithNameAndId { Id = r.Id, Name = r.Pupils.FirstName + " " + r.Pupils.LastName + " - " + r.Note })
             };
         }
 
