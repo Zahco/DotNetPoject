@@ -9,10 +9,11 @@ namespace Academy.Repositories
 {
     public class EvaluationRepository : Repository<Evaluations>
     {
-        public EvaluationRepository(Entities.Entities _dbase) : base(_dbase.Evaluations, _dbase)
+        public EvaluationRepository(Entities.Entities _dbase) : base(_dbase.Evaluations, _dbase) { }
+
+        public Evaluations GetById(Guid Id)
         {
+            return All().FirstOrDefault(e => e.Id == Id);
         }
-
-
     }
 }

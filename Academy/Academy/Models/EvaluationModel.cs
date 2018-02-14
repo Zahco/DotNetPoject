@@ -13,32 +13,60 @@ namespace Academy.Models
     {
         public Guid Id { get; set; }
 
-        [Required]
-        [DisplayName("Classe")]
         [UIHint("SelectFor")]
         [AdditionalMetadata("method", "GetClassrooms")]
-        public ModelWithNameAndId Classroom { get; set; }
-        [Required]
-        [DisplayName("Utilisateur")]
+        public Guid ClassroomId { get; set; }
+
+        [DisplayName("Classe")]
+        public string Classroom { get; set; }
+
         [UIHint("SelectFor")]
         [AdditionalMetadata("method", "GetUsers")]
-        public ModelWithNameAndId User { get; set; }
+        public Guid UserId { get; set; }
+
+        [DisplayName("Utilisateur")]
+        public string User { get; set; }
+
+        [UIHint("SelectFor")]
+        [AdditionalMetadata("method", "GetPeriods")]
+        public Guid PeriodId { get; set; }
+
         [Required]
+        [UIHint("Date")]
         [DisplayName("Date")]
         public DateTime Date { get; set; }
+
         [Required]
         [DisplayName("Total des points")]
         public int TotalPoint { get; set; }
+
+        [DisplayName("Classe")]
+        public ModelWithNameAndId ClassroomWithNameAndId { get; set; }
+
+        [DisplayName("Professeur")]
+        public ModelWithNameAndId UserWithNameAndId { get; set; }
 
         public static EvaluationModel ToModel(Evaluations evaluations)
         {
             return new EvaluationModel
             {
                 Id = evaluations.Id,
-                Classroom = new ModelWithNameAndId { Id = evaluations.Classrooms.Id, Name = evaluations.Classrooms.Title },
+                ClassroomId = evaluations.Classroom_Id,
+                Classroom = evaluations.Classrooms.Title,
                 Date = evaluations.Date,
+                UserId = evaluations.User_Id,
+                User = evaluations.Users.FirstName + " " + evaluations.Users.LastName,
                 TotalPoint = evaluations.TotalPoint,
-                User = new ModelWithNameAndId { Id = evaluations.Users.Id, Name = evaluations.Users.UserName }
+                ClassroomWithNameAndId = new ModelWithNameAndId
+                {
+                    Id = evaluations.Classrooms.Id,
+                    Name = evaluations.Classrooms.Title
+                },
+                UserWithNameAndId = new ModelWithNameAndId
+                {
+                    Id = evaluations.Users.Id,
+                    Name = evaluations.Users.FirstName + " " + evaluations.Users.LastName
+                },
             };
         }
     }

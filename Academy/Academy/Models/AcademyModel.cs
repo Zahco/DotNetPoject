@@ -21,7 +21,6 @@ namespace Academy.Models
         [DisplayName("Nom de l'établissement")]
         public IEnumerable<ModelWithNameAndId> Establishments { get; set; }
 
-
         public static AcademyModel ToModel(Academies academies)
         {
             return new AcademyModel

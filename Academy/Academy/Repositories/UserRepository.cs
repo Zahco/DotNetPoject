@@ -14,5 +14,10 @@ namespace Academy.Repositories
         {
             return Entities.FirstOrDefault(u => u.UserName == userName && u.Password == password);
         }
+
+        public Users GetById(Guid id)
+        {
+            return All().FirstOrDefault(u => u.Id == id);
+        }
     }
 }

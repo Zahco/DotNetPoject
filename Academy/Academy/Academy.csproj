@@ -202,6 +202,7 @@
     <Compile Include="Repositories\EstablishmentRepository.cs" />
     <Compile Include="Repositories\EvaluationRepository.cs" />
     <Compile Include="Repositories\LevelRepository.cs" />
+    <Compile Include="Repositories\PeriodRepository.cs" />
     <Compile Include="Repositories\PupilRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\TutorRepository.cs" />
@@ -268,6 +269,8 @@
     <Content Include="Views\Tutor\Get.cshtml" />
     <Content Include="Views\Tutor\GetAll.cshtml" />
     <Content Include="Views\Evaluation\GetAll.cshtml" />
+    <Content Include="Views\Evaluation\Get.cshtml" />
+    <Content Include="Views\Evaluation\AddOrUpdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,25 @@
+﻿@model EvaluationModel
+@{
+    var id = Html.RandomID();
+    ViewBag.Title = "Evaluation";
+}
+
+<section class="row">
+    <aside class="col-md-3">        
+        <section id="crud-action">
+            <a class="btn btn-default update-link" href="@Url.Action("AddOrUpdate", "Evaluation", new { id = Model.Id })" role="button">
+                <i class="glyphicon glyphicon-pencil"></i> Modifier
+            </a>
+            <a class="btn btn-danger delete-link" href="@Url.Action("Delete", "Evaluation", new { id = Model.Id })" role="button">
+                <i class="glyphicon glyphicon-trash"></i> Supprimer
+            </a>
+        </section>
+    </aside>
+
+    <section class="col-md-9">
+        <h2>&Eacute;valuation pour la classe @Model.ClassroomWithNameAndId.Name</h2>
+        
+    </section>
+</section>
+
+

@@ -17,7 +17,7 @@ namespace Academy.Models
 
         [Required(ErrorMessage = "Le champ Titre est requis")]
         [StringLength(50, ErrorMessage = "Le nom de la classe doit être compris entre 1 et 50 charactères")]
-        [DisplayName("Titre de la salle")]
+        [DisplayName("Titre de la classe")]
         public string Title { get; set; }
 
         [UIHint("SelectFor")]
@@ -31,7 +31,7 @@ namespace Academy.Models
         [AdditionalMetadata("method", "GetUsers")]
         public Guid UserId { get; set; }
 
-        [DisplayName("Utilisateur")]
+        [DisplayName("Professeur")]
         public string User { get; set; }
 
         [UIHint("SelectFor")]
