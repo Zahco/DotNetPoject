@@ -68,6 +68,7 @@ namespace Academy.Models
                     Id = evaluations.Users.Id,
                     Name = evaluations.Users.FirstName + " " + evaluations.Users.LastName
                 },
+                PeriodId = evaluations.Period_Id
             };
         }
 
