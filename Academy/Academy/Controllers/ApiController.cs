@@ -143,7 +143,7 @@ namespace Academy.Controllers
             var evaluations = EvaluationRepository.All().Select(e => new ModelWithNameAndId
             {
                 Id = e.Id,
-                Name = e.Id.ToString()
+                Name = e.Classrooms.Title + " - " + e.Date.ToShortDateString()
             });
             return Json(evaluations, JsonRequestBehavior.AllowGet);
         }
