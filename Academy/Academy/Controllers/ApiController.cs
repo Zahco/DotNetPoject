@@ -21,6 +21,8 @@ namespace Academy.Controllers
 
         public LevelRepository LevelRepository { get; }
 
+        public PeriodRepository PeriodRepository { get; }
+
         public UserRepository UserRepository { get; }
 
         public TutorRepository TutorRepository { get; }
@@ -34,6 +36,7 @@ namespace Academy.Controllers
             ClassroomRepository = new ClassroomRepository(entities);
             EstablishmentRepository = new EstablishmentRepository(entities);
             LevelRepository = new LevelRepository(entities);
+            PeriodRepository new PeriodRepository(entities);
             UserRepository = new UserRepository(entities);
             TutorRepository = new TutorRepository(entities);
             YearRepository = new YearRepository(entities);
@@ -108,5 +111,14 @@ namespace Academy.Controllers
             });
             return Json(levels, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult GetPeriods()
+        {
+            var periods = PeriodRepository.All().Select(p => new ModelWithNameAndId
+            {
+                Id = p.Id,
+                Name = p.Begin.Date + "-" + p.End.Date,
+            });
+            return Json(periods, JsonRequestBehavior.AllowGet);
     }
 }
