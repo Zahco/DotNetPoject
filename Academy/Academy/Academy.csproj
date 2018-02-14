@@ -168,6 +168,7 @@
     <Compile Include="Controllers\EvaluationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PupilController.cs" />
+    <Compile Include="Controllers\ResultController.cs" />
     <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="Controllers\TutorController.cs" />
     <Compile Include="Global.asax.cs">
@@ -195,6 +196,7 @@
     <Compile Include="Models\LogOnModel.cs" />
     <Compile Include="Models\ModelWithNameAndId.cs" />
     <Compile Include="Models\PupilModel.cs" />
+    <Compile Include="Models\ResultModel.cs" />
     <Compile Include="Models\TutorModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AcademyRepository.cs" />
@@ -205,6 +207,7 @@
     <Compile Include="Repositories\PeriodRepository.cs" />
     <Compile Include="Repositories\PupilRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\ResultRepository.cs" />
     <Compile Include="Repositories\TutorRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Models\AcademyModel.cs" />
@@ -271,6 +274,9 @@
     <Content Include="Views\Evaluation\GetAll.cshtml" />
     <Content Include="Views\Evaluation\Get.cshtml" />
     <Content Include="Views\Evaluation\AddOrUpdate.cshtml" />
+    <Content Include="Views\Result\AddOrUpdate.cshtml" />
+    <Content Include="Views\Result\Get.cshtml" />
+    <Content Include="Views\Result\GetAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

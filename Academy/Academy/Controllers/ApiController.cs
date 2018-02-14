@@ -15,13 +15,17 @@ namespace Academy.Controllers
     {
         public AcademyRepository AcademyRepository { get; }
 
-        public ClassroomRepository ClassroomRepository{ get; }
+        public ClassroomRepository ClassroomRepository { get; }
 
         public EstablishmentRepository EstablishmentRepository { get; }
+
+        public EvaluationRepository EvaluationRepository { get; }
 
         public LevelRepository LevelRepository { get; }
 
         public PeriodRepository PeriodRepository { get; }
+
+        public PupilRepository PupilRepository { get; }
 
         public UserRepository UserRepository { get; }
 
@@ -35,17 +39,19 @@ namespace Academy.Controllers
             AcademyRepository = new AcademyRepository(entities);
             ClassroomRepository = new ClassroomRepository(entities);
             EstablishmentRepository = new EstablishmentRepository(entities);
+            EvaluationRepository = new EvaluationRepository(entities);
             LevelRepository = new LevelRepository(entities);
-            PeriodRepository new PeriodRepository(entities);
+            PupilRepository = new PupilRepository(entities);
+            PeriodRepository = new PeriodRepository(entities);
             UserRepository = new UserRepository(entities);
             TutorRepository = new TutorRepository(entities);
             YearRepository = new YearRepository(entities);
         }
-        
+
         public ActionResult GetAcademies()
         {
             var academies = AcademyRepository.All().Select(a => new ModelWithNameAndId
-            { 
+            {
                 Id = a.Id,
                 Name = a.Name
             });
@@ -120,5 +126,26 @@ namespace Academy.Controllers
                 Name = p.Begin.Date + "-" + p.End.Date,
             });
             return Json(periods, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetPupils()
+        {
+            var pupils = PupilRepository.All().Select(p => new ModelWithNameAndId
+            {
+                Id = p.Id,
+                Name = p.FirstName + " " + p.LastName
+            });
+            return Json(pupils, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetEvaluations()
+        {
+            var evaluations = EvaluationRepository.All().Select(e => new ModelWithNameAndId
+            {
+                Id = e.Id,
+                Name = e.Id.ToString()
+            });
+            return Json(evaluations, JsonRequestBehavior.AllowGet);
+        }
     }
 }
