@@ -16,7 +16,6 @@
                 </th>
                 <th>@Html.DisplayNameFor(m => m.Evaluation)</th>
                 <th>@Html.DisplayNameFor(m => m.Pupil)</th>
-                <th>@Html.DisplayNameFor(m => m.Note)</th>
                 <td align="right">
                     <div class="input-group">
                         <input class="form-control" type="text" data-filter-id="@id" placeholder="Rechercher" />
@@ -30,11 +29,10 @@
             {
                 <tr id="@result.Id">
                     <td>
-                        <a href="@Url.Action("Get", "Result", new { id = result.Id })">Note</a>
+                        <a href="@Url.Action("Get", "Result", new { id = result.Id })">@result.Note</a>
                     </td>
-                    <td>@result.Evaluation</td>
-                    <td>@result.Pupil</td>
-                    <td>@result.Note</td>
+                    <td><a href="@Url.Action("Get", "Evaluation", new { id = result.EvaluationId })">@result.Evaluation.Classroom - @result.Evaluation.Date.ToShortDateString()</a></td>
+                    <td><a href="@Url.Action("Get", "Pupil", new { id = result.PupilId })">@result.Pupil</a></td>
 
                     <td align="right">
                         <a class="update-link" href="@Url.Action("AddOrUpdate", "Result", new { id = result.Id })" role="button">

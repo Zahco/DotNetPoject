@@ -7,7 +7,7 @@
     <aside class="col-md-12">
         <h1>Note</h1>
         <ul class="list-unstyled">
-            <li>@Html.DisplayNameFor(m => m.Evaluation) : <a href="@Url.Action("Get", "Evaluation", new { id = Model.EvaluationId })">@Model.Evaluation</a></li>
+            <li>@Html.DisplayNameFor(m => m.Evaluation) : <a href="@Url.Action("Get", "Evaluation", new { id = Model.EvaluationId })">@Model.Evaluation.Classroom - @Model.Evaluation.Date.ToShortDateString()</a></li>
             <li>@Html.DisplayNameFor(m => m.Pupil) : <a href="@Url.Action("Get", "Pupil", new { id = Model.PupilId })">@Model.Pupil</a></li>
             <li>@Html.DisplayNameFor(m => m.Note) : @Model.Note</li>
         </ul>
