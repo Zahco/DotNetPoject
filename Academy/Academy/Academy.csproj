@@ -167,6 +167,7 @@
     <Compile Include="Controllers\EstablishmentController.cs" />
     <Compile Include="Controllers\EvaluationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PeriodController.cs" />
     <Compile Include="Controllers\PupilController.cs" />
     <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="Controllers\TutorController.cs" />
@@ -194,6 +195,7 @@
     <Compile Include="Models\GlobalVariables.cs" />
     <Compile Include="Models\LogOnModel.cs" />
     <Compile Include="Models\ModelWithNameAndId.cs" />
+    <Compile Include="Models\PeriodModel.cs" />
     <Compile Include="Models\PupilModel.cs" />
     <Compile Include="Models\TutorModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -271,6 +273,9 @@
     <Content Include="Views\Evaluation\GetAll.cshtml" />
     <Content Include="Views\Evaluation\Get.cshtml" />
     <Content Include="Views\Evaluation\AddOrUpdate.cshtml" />
+    <Content Include="Views\Period\AddOrUpdate.cshtml" />
+    <Content Include="Views\Period\Get.cshtml" />
+    <Content Include="Views\Period\GetAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -23,11 +23,12 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Académies", "GetAll", "Academy")</li>
-                    <li>@Html.ActionLink("Etablissement", "GetAll", "Establishment")</li>
+                    <li>@Html.ActionLink("Etablissements", "GetAll", "Establishment")</li>
                     <li>@Html.ActionLink("Classes", "GetAll", "Classroom")</li>
                     <li>@Html.ActionLink("Elèves", "GetAll", "Pupil")</li>
                     <li>@Html.ActionLink("Tuteurs", "GetAll", "Tutor")</li>
-                    <li>@Html.ActionLink("Evaluation", "GetAll", "Evaluation")</li>
+                    <li>@Html.ActionLink("Evaluations", "GetAll", "Evaluation")</li>
+                    <li>@Html.ActionLink("Périodes", "GetAll", "Period")</li>
                     @if (GlobalVariables.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Déconnexion", "LogOff", "Session")</li>
