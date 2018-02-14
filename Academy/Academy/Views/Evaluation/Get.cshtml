@@ -5,7 +5,13 @@
 }
 
 <section class="row">
-    <aside class="col-md-3">        
+    <aside class="col-md-3">
+        <h1>&Eacute;valuation</h1>
+        <ul class="list-unstyled">
+            <li>Classe : @Model.ClassroomWithNameAndId.Name</li>
+            <li>Date : @Model.Date.ToShortDateString()</li>
+            <li>Total des points : @Model.TotalPoint</li>
+        </ul>
         <section id="crud-action">
             <a class="btn btn-default update-link" href="@Url.Action("AddOrUpdate", "Evaluation", new { id = Model.Id })" role="button">
                 <i class="glyphicon glyphicon-pencil"></i> Modifier
