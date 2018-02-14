@@ -1,4 +1,5 @@
-﻿using Academy.Entities;
+﻿using Academy.Attributes;
+using Academy.Entities;
 using Academy.Models;
 using Academy.Repositories;
 using System;
@@ -9,14 +10,17 @@ using System.Web.Mvc;
 
 namespace Academy.Controllers
 {
+    [RequiredConnectedUser]
     public class PeriodController : Controller
     {
         public PeriodRepository PeriodRepository { get; set; }
+        public YearRepository YearRepository { get; set; }
 
         public PeriodController()
         {
             var entities = new Entities.Entities();
             PeriodRepository = new PeriodRepository(entities);
+            YearRepository = new YearRepository(entities);
         }
 
         public ActionResult GetAll()
@@ -54,7 +58,7 @@ namespace Academy.Controllers
 
             period.Begin = model.Begin;
             period.End = model.End;
-            period.Year_Id = model.Year.Id;
+            period.Years = YearRepository.GetById(model.YearId);
 
             if (isCreated)
             {
