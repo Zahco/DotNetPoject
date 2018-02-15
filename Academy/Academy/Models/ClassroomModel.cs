@@ -74,15 +74,9 @@ namespace Academy.Models
         {
             var classroomRepository = new ClassroomRepository(new Entities.Entities());
             var classroom = classroomRepository.GetByTitle(Title);
-            if (classroom != null && classroom.Id != Id)
+            if (classroom.Any(c => c.Establishment_Id == Establishment_Id && c.Id != Id))
             {
-                yield return new ValidationResult("Cette classe est déjà enregistré dans le système", new[] { "Title" });
-            }
-
-            var establishmentId = classroomRepository.GetByEstablishment(Establishment_Id);
-            if (classroom.Establishments != establishmentId)
-            {
-                yield return new ValidationResult("Cette classe est déjà présente dans l'établissement", new[] { "Establishments" });
+                yield return new ValidationResult("Cette classe est déjà présente dans l'établissement", new[] { "Title", "Establishments" });
             }
         }
     }
