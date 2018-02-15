@@ -191,6 +191,7 @@
     <Compile Include="Entities\Years.cs" />
     <Compile Include="Helpers\HtmlExtensions.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />
+    <Compile Include="Models\AddAllByEvalModel.cs" />
     <Compile Include="Models\ClassroomModel.cs" />
     <Compile Include="Models\EvaluationModel.cs" />
     <Compile Include="Models\GlobalVariables.cs" />
@@ -282,6 +283,7 @@
     <Content Include="Views\Period\AddOrUpdate.cshtml" />
     <Content Include="Views\Period\Get.cshtml" />
     <Content Include="Views\Period\GetAll.cshtml" />
+    <Content Include="Views\Result\AddAllByEval.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -59,10 +59,8 @@ namespace Academy.Controllers
             {
                 result = ResultRepository.GetById(model.Id);
             }
-
-            result.Evaluation_Id = model.EvaluationId;
+            
             result.Evaluations = EvaluationRepository.GetById(model.EvaluationId);
-            result.Pupil_Id = model.PupilId;
             result.Pupils = PupilRepository.GetById(model.PupilId);
             result.Note = model.Note;           
 
@@ -80,6 +78,50 @@ namespace Academy.Controllers
             ResultRepository.Delete(id);
             ResultRepository.Save();
             return Redirect(Url.Action("GetAll", "Result"));
+        }
+
+        public ActionResult AddAllByEval(Guid EvalId)
+        {
+            var eval = EvaluationRepository.GetById(EvalId);
+            var model = new AddAllByEvalModel
+            {
+                EvalId = eval.Id,
+                Results = eval.Classrooms.Pupils.Select(p => new OneResult
+                {
+                    Pupil = new ModelWithNameAndId { Id = p.Id, Name = p.FirstName + " " + p.LastName },
+                    Note = p.Results.SingleOrDefault(r => r.Evaluations.Id == EvalId)?.Note ?? 0
+                }).ToList()
+            };
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult AddAllByEval(AddAllByEvalModel model)
+        {
+            var eval = EvaluationRepository.GetById(model.EvalId);
+
+            foreach(var result in model.Results)
+            {
+                var resutlEntity = ResultRepository.GetByEvalAndPupil(eval.Id, result.Pupil.Id);
+                var isNew = resutlEntity == null;
+
+                if (isNew)
+                {
+                    resutlEntity = new Results();
+                }
+
+                resutlEntity.Evaluations = eval;
+                resutlEntity.Note = result.Note;
+                resutlEntity.Pupils = PupilRepository.GetById(result.Pupil.Id);
+
+                if (isNew)
+                {
+                    ResultRepository.Add(resutlEntity);
+                }
+            }
+
+            ResultRepository.Save();
+
+            return Redirect(Url.Action("Get", "Evaluation", new { Id = eval.Id }));
         }
     }
 }
