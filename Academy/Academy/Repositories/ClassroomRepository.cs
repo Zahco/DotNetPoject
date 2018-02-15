@@ -8,7 +8,7 @@ namespace Academy.Repositories
 {
     public class ClassroomRepository : Repository<Classrooms>
     {
-        private EstablishmentRepository establishmentRepos
+        private EstablishmentRepository establishmentRepository;
 
         public ClassroomRepository(Entities.Entities _dbase) : base(_dbase.Classrooms, _dbase)
         {

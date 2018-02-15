@@ -277,13 +277,15 @@
     <Content Include="Views\Evaluation\GetAll.cshtml" />
     <Content Include="Views\Evaluation\Get.cshtml" />
     <Content Include="Views\Evaluation\AddOrUpdate.cshtml" />
-    <Content Include="Views\Result\Update.cshtml" />
+    <Content Include="Views\Result\AddOrUpdate.cshtml" />
     <Content Include="Views\Result\Get.cshtml" />
     <Content Include="Views\Result\GetAll.cshtml" />
     <Content Include="Views\Period\AddOrUpdate.cshtml" />
     <Content Include="Views\Period\Get.cshtml" />
     <Content Include="Views\Period\GetAll.cshtml" />
     <Content Include="Views\Result\AddAllByEval.cshtml" />
+    <Content Include="Views\Result\Update.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,8 @@
+﻿@inherits System.Web.Mvc.WebViewPage<System.DateTime?>
+@*@model DateTime*@
+@{
+    ViewBag.Title = "DateTime";
+    var name = ViewData.TemplateInfo.HtmlFieldPrefix;
+}
+
+<input name="@name"  type='date' class="form-control" value="@Model.Value.ToString("yyyy-MM-dd")" />

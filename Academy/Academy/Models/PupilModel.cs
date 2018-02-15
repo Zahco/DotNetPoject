@@ -23,7 +23,7 @@ namespace Academy.Models
         [DisplayName("Nom")]
         public string LastName { get; set; }
 
-        [UIHint("Date")]
+        [UIHint("DateTime")]
         [DisplayName("Date de naissance")]
         public DateTime BirthdayDate { get; set; }
 
@@ -53,7 +53,7 @@ namespace Academy.Models
 
         [DisplayName("Niveau de scolarité")]
         public string Levels { get; set; }
-        
+
         [DisplayName("Identité")]
         public string FullName
         {
@@ -80,7 +80,7 @@ namespace Academy.Models
                 State = pupil.State,
                 Tutor = pupil.Tutors.FirstName + " " + pupil.Tutors.LastName,
                 TutorId = pupil.Tutor_Id,
-                Sex = (Gender) pupil.Sex,
+                Sex = (Gender)pupil.Sex,
                 Results = pupil.Results.Select(r => new ResultListByPupil
                 {
                     Evaluation = new ModelWithNameAndId { Id = r.Evaluations.Id, Name = r.Evaluations.Classrooms.Title + " - " + r.Evaluations.Date.ToShortDateString() },
