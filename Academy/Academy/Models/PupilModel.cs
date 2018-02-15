@@ -63,6 +63,8 @@ namespace Academy.Models
             }
         }
 
+        public IEnumerable<ResultListByPupil> Results { get; set; }
+
         public static PupilModel ToModel(Pupils pupil)
         {
             return new PupilModel
@@ -78,8 +80,19 @@ namespace Academy.Models
                 State = pupil.State,
                 Tutor = pupil.Tutors.FirstName + " " + pupil.Tutors.LastName,
                 TutorId = pupil.Tutor_Id,
-                Sex = (Gender) pupil.Sex
+                Sex = (Gender) pupil.Sex,
+                Results = pupil.Results.Select(r => new ResultListByPupil
+                {
+                    Evaluation = new ModelWithNameAndId { Id = r.Evaluations.Id, Name = r.Evaluations.Classrooms.Title + " - " + r.Evaluations.Date.ToShortDateString() },
+                    Result = new ModelWithNameAndId { Id = r.Id, Name = r.Note.ToString() }
+                })
             };
+        }
+
+        public class ResultListByPupil
+        {
+            public ModelWithNameAndId Result { get; set; }
+            public ModelWithNameAndId Evaluation { get; set; }
         }
     }
 

@@ -47,7 +47,7 @@ namespace Academy.Models
         [DisplayName("Professeur")]
         public ModelWithNameAndId UserWithNameAndId { get; set; }
 
-        public IEnumerable<ModelWithNameAndId> Results { get; set; }
+        public IEnumerable<ResultListByEval> Results { get; set; }
 
         public static EvaluationModel ToModel(Evaluations evaluations)
         {
@@ -71,7 +71,11 @@ namespace Academy.Models
                     Name = evaluations.Users.FirstName + " " + evaluations.Users.LastName
                 },
                 PeriodId = evaluations.Period_Id,
-                Results = evaluations.Results.Select(r => new ModelWithNameAndId { Id = r.Id, Name = r.Pupils.FirstName + " " + r.Pupils.LastName + " - " + r.Note })
+                Results = evaluations.Results.OrderByDescending(r => r.Note).Select(r => new ResultListByEval
+                {
+                    Pupil = new ModelWithNameAndId { Id = r.Pupils.Id, Name = r.Pupils.FirstName + " " + r.Pupils.LastName },
+                    Result = new ModelWithNameAndId { Id = r.Id, Name = r.Note.ToString() }
+                })
             };
         }
 
@@ -83,6 +87,12 @@ namespace Academy.Models
             {
                 yield return new ValidationResult("La date doit être comprise dans la période", new string[] { "Date" });
             }
+        }
+
+        public class ResultListByEval
+        {
+            public ModelWithNameAndId Result { get; set; }
+            public ModelWithNameAndId Pupil { get; set; }
         }
     }
 }

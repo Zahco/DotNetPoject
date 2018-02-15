@@ -12,20 +12,11 @@ namespace Academy.Models
     public class ResultModel : IValidatableObject
     {
         public Guid Id { get; set; }
-
-        [UIHint("SelectFor")]
-        [AdditionalMetadata("method", "GetEvaluations")]
-        public Guid EvaluationId { get; set; } 
-        
         [DisplayName("Evaluation")]
-        public EvaluationModel Evaluation { get; set; }        
-
-        [UIHint("SelectFor")]
-        [AdditionalMetadata("method", "GetPupils")]
-        public Guid PupilId { get; set; }
+        public ModelWithNameAndId Evaluation { get; set; }  
 
         [DisplayName("Elève")]
-        public string Pupil { get; set; }
+        public ModelWithNameAndId Pupil { get; set; }
 
         [DisplayName("Note")]
         public double Note { get; set; }
@@ -35,11 +26,9 @@ namespace Academy.Models
             return new ResultModel
             {
                 Id = model.Id,
-                EvaluationId = model.Evaluation_Id,
-                Evaluation = EvaluationModel.ToModel(model.Evaluations),
+                Evaluation = new ModelWithNameAndId { Id = model.Evaluations.Id, Name = model.Evaluations.Classrooms.Title + " - " + model.Evaluations.Date },
                 Note = model.Note,
-                PupilId = model.Pupil_Id,
-                Pupil = model.Pupils.FirstName + " " + model.Pupils.LastName,
+                Pupil = new ModelWithNameAndId { Id = model.Pupils.Id, Name = model.Pupils.FirstName + " " + model.Pupils.LastName },
             };
         }
    
