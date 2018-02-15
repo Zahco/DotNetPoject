@@ -86,6 +86,11 @@ namespace Academy.Controllers
 
         public ActionResult Delete(Guid Id)
         {
+            var classroom = ClassroomRepository.GetById(Id);
+            if (classroom.Pupils.Count() > 0)
+            {
+                return Redirect(Url.Action("GetAll", "Classroom"));
+            }
             ClassroomRepository.Delete(Id);
             ClassroomRepository.Save();
             return Redirect(Url.Action("GetAll", "Classroom"));

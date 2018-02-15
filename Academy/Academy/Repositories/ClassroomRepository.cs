@@ -8,11 +8,11 @@ namespace Academy.Repositories
 {
     public class ClassroomRepository : Repository<Classrooms>
     {
-        private EstablishmentRepository EstablishmentRepository;
+        private EstablishmentRepository establishmentRepos
 
         public ClassroomRepository(Entities.Entities _dbase) : base(_dbase.Classrooms, _dbase)
         {
-            EstablishmentRepository = new EstablishmentRepository(_dbase);
+            establishmentRepository = new EstablishmentRepository(_dbase);
         }
 
         public Classrooms GetByTitle(string name)
@@ -22,8 +22,8 @@ namespace Academy.Repositories
 
         public Establishments GetByEstablishment(Guid establishmentId)
         {
-            return EstablishmentRepository.All()
+            return establishmentRepository.All()
                 .FirstOrDefault(e => e.Id == establishmentId);
-        }        
+        }
     }
 }
