@@ -26,7 +26,7 @@ namespace Academy.Models
             return new ResultModel
             {
                 Id = model.Id,
-                Evaluation = new ModelWithNameAndId { Id = model.Evaluations.Id, Name = model.Evaluations.Classrooms.Title + " - " + model.Evaluations.Date.ToShortDateString() },
+                Evaluation = new ModelWithNameAndId { Id = model.Evaluations.Id, Name = model.Evaluations.Classrooms.Title + " - " + model.Evaluations.Date },
                 Note = model.Note,
                 Pupil = new ModelWithNameAndId { Id = model.Pupils.Id, Name = model.Pupils.FirstName + " " + model.Pupils.LastName },
             };

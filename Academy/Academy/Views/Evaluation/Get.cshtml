@@ -57,7 +57,7 @@
                             <a href="@Url.Action("Get","Pupil", new { Id = result.Pupil.Id })">@result.Pupil.Name</a>
                         </td>
                         <td align="right">
-                            <a class="update-link" href="@Url.Action("AddOrUpdate", "Result", new { id = result.Result.Id })" role="button">
+                            <a class="update-link" href="@Url.Action("Update", "Result", new { id = result.Result.Id })" role="button">
                                 <i class="glyphicon glyphicon-pencil"></i>
                             </a>
                             <a class="delete-link" href="@Url.Action("Delete", "Result", new { id = result.Result.Id })" role="button">
