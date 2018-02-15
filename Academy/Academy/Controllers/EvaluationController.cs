@@ -95,5 +95,17 @@ namespace Academy.Controllers
             EvaluationRepository.Save();
             return Redirect(Url.Action("GetAll", "Evaluation"));
         }
+
+        public ActionResult GetByFilter(string filter)
+        {
+            return Json(EvaluationRepository.All()
+                .Where(e => 
+                (e.Classrooms.Title.ToLower() 
+                + e.Date.ToString() 
+                + e.TotalPoint.ToString() 
+                + e.Users.LastName.ToLower()
+                + e.Users.FirstName.ToLower()).Contains(filter.ToLower()))
+                .Select(e => e.Id), JsonRequestBehavior.AllowGet);
+        }
     }
 }
