@@ -43,6 +43,8 @@ namespace Academy.Models
 
         public IEnumerable<ModelWithNameAndId> Students { get; set; }
 
+        public IEnumerable<ModelWithNameAndId> Evaluations { get; set; }
+
         public static ClassroomModel ToModel(Classrooms classroom)
         {
             return new ClassroomModel
@@ -59,7 +61,12 @@ namespace Academy.Models
                 {
                     Id = p.Id,
                     Name = p.FirstName + " " + p.LastName
-                })
+                }),
+                Evaluations = classroom.Evaluations.Select(e => new ModelWithNameAndId
+                {
+                    Id = e.Id,
+                    Name = classroom.Title + " " + e.Date
+                }),
             };
         }
 
