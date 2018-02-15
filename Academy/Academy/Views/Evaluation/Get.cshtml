@@ -13,7 +13,7 @@
             <li>Total des points : @Model.TotalPoint</li>
         </ul>
         <section id="crud-action">
-            <a class="btn btn-default update-link" href="@Url.Action("AddOrUpdate", "Evaluation", new { id = Model.Id })" role="button">
+            <a class="btn btn-default update-link" href="@Url.Action("Update", "Evaluation", new { id = Model.Id })" role="button">
                 <i class="glyphicon glyphicon-pencil"></i> Modifier
             </a>
             <a class="btn btn-danger delete-link" href="@Url.Action("Delete", "Evaluation", new { id = Model.Id })" role="button">
@@ -22,7 +22,7 @@
         </section>
         <section id="crud-action" style="margin-top: 1em;">
             <a class="btn btn-default update-link" href="@Url.Action("AddAllByEval", "Result", new { EvalId = Model.Id })" role="button">
-                <i class="glyphicon glyphicon-pencil"></i> Modifier les notes
+                <i class="glyphicon glyphicon-pencil"></i> Saisir les Résultats
             </a>
         </section>
     </aside>
@@ -33,9 +33,6 @@
             <thead>
                 <tr>
                     <th>
-                        <a class="add-link" href="@Url.Action("AddOrUpdate", "Result", new { EvulationId = Model.Id })" role="button">
-                            <i class="glyphicon glyphicon-plus"></i>
-                        </a>
                         <span>Résultat</span>
                     </th>
                     <th>

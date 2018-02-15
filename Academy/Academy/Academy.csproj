@@ -277,7 +277,7 @@
     <Content Include="Views\Evaluation\GetAll.cshtml" />
     <Content Include="Views\Evaluation\Get.cshtml" />
     <Content Include="Views\Evaluation\AddOrUpdate.cshtml" />
-    <Content Include="Views\Result\AddOrUpdate.cshtml" />
+    <Content Include="Views\Result\Update.cshtml" />
     <Content Include="Views\Result\Get.cshtml" />
     <Content Include="Views\Result\GetAll.cshtml" />
     <Content Include="Views\Period\AddOrUpdate.cshtml" />

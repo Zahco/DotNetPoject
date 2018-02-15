@@ -1,4 +1,5 @@
-﻿using Academy.Entities;
+﻿using Academy.Attributes;
+using Academy.Entities;
 using Academy.Models;
 using Academy.Repositories;
 using System;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 
 namespace Academy.Controllers
 {
+    [RequiredConnectedUser]
     public class ResultController : Controller
     {
         public ResultRepository ResultRepository;
@@ -37,18 +39,13 @@ namespace Academy.Controllers
             return View(model);
         }
 
-        public ActionResult AddOrUpdate(Guid? id)
+        public ActionResult Update(Guid id)
         {
-            var model = new ResultModel();
-            if (id.HasValue)
-            {
-                model = ResultModel.ToModel(ResultRepository.GetById(id.Value));
-            }
-            return View(model);
+            return View(ResultModel.ToModel(ResultRepository.GetById(id)));
         }
 
         [HttpPost]
-        public ActionResult AddOrUpdate(ResultModel model)
+        public ActionResult Update(ResultModel model)
         {
             if (!ModelState.IsValid)
                 return View(model);
@@ -60,8 +57,6 @@ namespace Academy.Controllers
                 result = ResultRepository.GetById(model.Id);
             }
             
-            result.Evaluations = EvaluationRepository.GetById(model.EvaluationId);
-            result.Pupils = PupilRepository.GetById(model.PupilId);
             result.Note = model.Note;           
 
             if (isCreated)
