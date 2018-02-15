@@ -43,6 +43,8 @@ namespace Academy.Models
 
         public IEnumerable<ModelWithNameAndId> Students { get; set; }
 
+        public IEnumerable<ModelWithNameAndId> Evaluations { get; set; }
+
         public static ClassroomModel ToModel(Classrooms classroom)
         {
             return new ClassroomModel
@@ -59,7 +61,12 @@ namespace Academy.Models
                 {
                     Id = p.Id,
                     Name = p.FirstName + " " + p.LastName
-                })
+                }),
+                Evaluations = classroom.Evaluations.Select(e => new ModelWithNameAndId
+                {
+                    Id = e.Id,
+                    Name = classroom.Title + " " + e.Date
+                }),
             };
         }
 
@@ -67,15 +74,9 @@ namespace Academy.Models
         {
             var classroomRepository = new ClassroomRepository(new Entities.Entities());
             var classroom = classroomRepository.GetByTitle(Title);
-            if (classroom != null && classroom.Id != Id)
+            if (classroom.Any(c => c.Establishment_Id == Establishment_Id && c.Id != Id))
             {
-                yield return new ValidationResult("Cette classe est déjà enregistré dans le système", new[] { "Title" });
-            }
-
-            var establishmentId = classroomRepository.GetByEstablishment(Establishment_Id);
-            if (classroom.Establishments != establishmentId)
-            {
-                yield return new ValidationResult("Cette classe est déjà présente dans l'établissement", new[] { "Establishments" });
+                yield return new ValidationResult("Cette classe est déjà présente dans l'établissement", new[] { "Title", "Establishments" });
             }
         }
     }

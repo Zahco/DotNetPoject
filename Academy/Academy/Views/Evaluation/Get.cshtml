@@ -8,7 +8,7 @@
     <aside class="col-md-3">
         <h1>&Eacute;valuation</h1>
         <ul class="list-unstyled">
-            <li>Classe : @Model.ClassroomWithNameAndId.Name</li>
+            <li>Classe : <a href="@Url.Action("Get", "Classroom", new { Id = Model.ClassroomId })">@Model.ClassroomWithNameAndId.Name</a></li>
             <li>Date : @Model.Date.ToShortDateString()</li>
             <li>Total des points : @Model.TotalPoint</li>
         </ul>

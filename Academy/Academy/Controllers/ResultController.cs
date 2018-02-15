@@ -118,5 +118,14 @@ namespace Academy.Controllers
 
             return Redirect(Url.Action("Get", "Evaluation", new { Id = eval.Id }));
         }
+        public ActionResult GetByFilter(string filter)
+        {
+            return Json(ResultRepository.All()
+                .Where(r =>
+                (r.Note.ToString()
+                + r.Pupils.LastName.ToLower()
+                + r.Pupils.FirstName.ToLower()).Contains(filter.ToLower()))
+                .Select(r => r.Id), JsonRequestBehavior.AllowGet);
+        }
     }
 }
