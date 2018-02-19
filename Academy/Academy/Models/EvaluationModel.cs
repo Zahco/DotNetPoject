@@ -25,7 +25,7 @@ namespace Academy.Models
         [AdditionalMetadata("method", "GetUsers")]
         public Guid UserId { get; set; }
 
-        [DisplayName("Utilisateur")]
+        [DisplayName("Professeur")]
         public string User { get; set; }
 
         [UIHint("SelectFor")]

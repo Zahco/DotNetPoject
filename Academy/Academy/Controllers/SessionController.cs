@@ -18,8 +18,9 @@ namespace Academy.Controllers
             var entities = new Entities.Entities();
             UserRepository = new UserRepository(entities);
         }
+
         // GET: LogOn
-        public ActionResult LogOn(string ReturnUrl)
+        public ActionResult LogOn(string returnUrl)
         {
             if (GlobalVariables.IsAuthenticated)
                 return Redirect(Url.Action("Index", "Home"));
@@ -27,7 +28,7 @@ namespace Academy.Controllers
             {
                 UserName = "USER4",
                 Password = "utilisateur4",
-                ReturnUrl = ReturnUrl
+                ReturnUrl = returnUrl
             });
         }
 

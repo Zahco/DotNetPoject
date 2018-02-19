@@ -17,7 +17,7 @@ namespace Academy.Models
 
         [Required(ErrorMessage = "Le champ Titre est requis")]
         [StringLength(50, ErrorMessage = "Le nom de la classe doit être compris entre 1 et 50 charactères")]
-        [DisplayName("Titre de la classe")]
+        [DisplayName("Nom de la classe")]
         public string Title { get; set; }
 
         [UIHint("SelectFor")]
@@ -41,8 +41,10 @@ namespace Academy.Models
         [DisplayName("Année")]
         public int Year { get; set; }
 
+        [DisplayName("Etudiants")]
         public IEnumerable<ModelWithNameAndId> Students { get; set; }
 
+        [DisplayName("Evaluations")]
         public IEnumerable<ModelWithNameAndId> Evaluations { get; set; }
 
         public static ClassroomModel ToModel(Classrooms classroom)
@@ -65,7 +67,7 @@ namespace Academy.Models
                 Evaluations = classroom.Evaluations.Select(e => new ModelWithNameAndId
                 {
                     Id = e.Id,
-                    Name = classroom.Title + " " + e.Date
+                    Name = classroom.Title + " " + e.Date.ToShortDateString()
                 }),
             };
         }

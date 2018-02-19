@@ -13,10 +13,12 @@ namespace Academy.Controllers
     [RequiredConnectedUser]
     public class EvaluationController : Controller
     {
-
         public EvaluationRepository EvaluationRepository { get; set; }
+
         public ClassroomRepository ClassroomRepository { get; set; }
+
         public UserRepository UserRepository { get; set; }
+
         public PeriodRepository PeriodRepository { get; set; }
 
         public EvaluationController()
@@ -40,7 +42,7 @@ namespace Academy.Controllers
             return View(model);
         }
 
-        public ActionResult AddOrUpdate(Guid? Id, Guid? ClassroomId)
+        public ActionResult AddOrUpdate(Guid? Id, Guid? classroomId)
         {
             var model = new EvaluationModel();
             model.Date = DateTime.Now;
@@ -48,9 +50,9 @@ namespace Academy.Controllers
             {
                 model = EvaluationModel.ToModel(EvaluationRepository.GetById(Id.Value));
             }
-            if (ClassroomId.HasValue)
+            if (classroomId.HasValue)
             {
-                model.ClassroomId = ClassroomId.Value;
+                model.ClassroomId = classroomId.Value;
             }
 
             return View(model);
@@ -89,9 +91,9 @@ namespace Academy.Controllers
             return Redirect(Url.Action("Get", "Evaluation", new { id = evaluation.Id }));
         }
 
-        public ActionResult Delete(Guid Id)
+        public ActionResult Delete(Guid id)
         {
-            EvaluationRepository.Delete(Id);
+            EvaluationRepository.Delete(id);
             EvaluationRepository.Save();
             return Redirect(Url.Action("GetAll", "Evaluation"));
         }

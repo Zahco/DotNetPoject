@@ -59,7 +59,9 @@ namespace Academy.Models
         public IEnumerable<ModelWithNameAndId> Pupils { get; set; }
 
         [DisplayName("Identité")]
-        public string FullName {  get
+        public string FullName
+        {
+            get
             {
                 return this.FirstName + " " + this.LastName;
             }

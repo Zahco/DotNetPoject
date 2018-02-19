@@ -8,7 +8,7 @@ namespace Academy.Models
     public class ModelWithNameAndId
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
 
+        public string Name { get; set; }
     }
 }

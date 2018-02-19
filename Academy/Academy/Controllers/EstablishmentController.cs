@@ -14,7 +14,9 @@ namespace Academy.Controllers
     public class EstablishmentController : Controller
     {
         public EstablishmentRepository EstablishmentRepository { get; set; }
+
         public AcademyRepository AcademyRepository { get; set; }
+
         public UserRepository UserRepository { get; set; }
 
         public EstablishmentController()
@@ -27,7 +29,9 @@ namespace Academy.Controllers
 
         public ActionResult GetAll()
         {
-            var models = EstablishmentRepository.All().Select(e => EstablishmentModel.ToModel(e));
+            var models = EstablishmentRepository.All()
+                .OrderBy(e => e.Academies.Name)
+                .Select(e => EstablishmentModel.ToModel(e));
             return View(models);
         }
 
@@ -37,7 +41,7 @@ namespace Academy.Controllers
             return View(model);
         }
 
-        public ActionResult AddOrUpdate(Guid? id, Guid? AcademyId)
+        public ActionResult AddOrUpdate(Guid? id, Guid? academyId)
         {
             var model = new EstablishmentModel();
             model.UserId = GlobalVariables.UserId;
@@ -45,9 +49,9 @@ namespace Academy.Controllers
             {
                 model = EstablishmentModel.ToModel(EstablishmentRepository.GetById(id.Value));
             }
-            if (AcademyId.HasValue)
+            if (academyId.HasValue)
             {
-                model.AcademyId = AcademyId.Value;
+                model.AcademyId = academyId.Value;
             }
 
             return View(model);
@@ -84,9 +88,9 @@ namespace Academy.Controllers
             return Redirect(Url.Action("Get", "Establishment", new { id = establishment.Id }));
         }
 
-        public ActionResult Delete(Guid Id)
+        public ActionResult Delete(Guid id)
         {
-            EstablishmentRepository.Delete(Id);
+            EstablishmentRepository.Delete(id);
             EstablishmentRepository.Save();
             return Redirect(Url.Action("GetAll", "Establishment"));
         }

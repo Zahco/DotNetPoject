@@ -14,6 +14,7 @@ namespace Academy.Controllers
     public class PeriodController : Controller
     {
         public PeriodRepository PeriodRepository { get; set; }
+
         public YearRepository YearRepository { get; set; }
 
         public PeriodController()
@@ -69,9 +70,9 @@ namespace Academy.Controllers
             return Redirect(Url.Action("Get", "Period", new { id = period.Id }));
         }
 
-        public ActionResult Delete(Guid Id)
+        public ActionResult Delete(Guid id)
         {
-            PeriodRepository.Delete(Id);
+            PeriodRepository.Delete(id);
             PeriodRepository.Save();
             return Redirect(Url.Action("GetAll", "Period"));
         }

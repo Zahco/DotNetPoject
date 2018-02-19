@@ -12,18 +12,20 @@ namespace Academy.Models
 {
     public class PeriodModel : IValidatableObject
     {
-
         public Guid Id { get; set; }
         [Required]
         [DisplayName("Date de début")]
         [DataType(DataType.Date)]
         public DateTime Begin { get; set; }
+
         [Required]
         [DisplayName("Date de fin")]
         [DataType(DataType.Date)]
         public DateTime End { get; set; }
+
         [DisplayName("Année")]
         public ModelWithNameAndId Year { get; set; }
+
         [UIHint("SelectFor")]
         [Required]
         [DisplayName("Année")]

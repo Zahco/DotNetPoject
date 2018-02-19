@@ -13,7 +13,7 @@ namespace Academy.Models
     {
         public Guid Id { get; set; }
         [DisplayName("Evaluation")]
-        public ModelWithNameAndId Evaluation { get; set; }  
+        public ModelWithNameAndId Evaluation { get; set; }
 
         [DisplayName("Elève")]
         public ModelWithNameAndId Pupil { get; set; }
@@ -26,17 +26,17 @@ namespace Academy.Models
             return new ResultModel
             {
                 Id = model.Id,
-                Evaluation = new ModelWithNameAndId { Id = model.Evaluations.Id, Name = model.Evaluations.Classrooms.Title + " - " + model.Evaluations.Date },
+                Evaluation = new ModelWithNameAndId { Id = model.Evaluations.Id, Name = model.Evaluations.Classrooms.Title + " - " + model.Evaluations.Date.ToShortDateString() },
                 Note = model.Note,
                 Pupil = new ModelWithNameAndId { Id = model.Pupils.Id, Name = model.Pupils.FirstName + " " + model.Pupils.LastName },
             };
         }
-   
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (0 > Note || Note > 20)
             {
-                yield return new ValidationResult("La note doit être comprise entre 0 et 20", new string[] { "Note" } );
+                yield return new ValidationResult("La note doit être comprise entre 0 et 20", new string[] { "Note" });
             }
         }
     }

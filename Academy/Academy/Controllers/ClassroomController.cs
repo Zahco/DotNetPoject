@@ -14,7 +14,9 @@ namespace Academy.Controllers
     public class ClassroomController : Controller
     {
         public ClassroomRepository ClassroomRepository { get; set; }
+
         public EstablishmentRepository EstablishmentRepository { get; set; }
+
         public UserRepository UserRepository { get; set; }
 
         public YearRepository YearRepository { get; set; }
@@ -40,16 +42,16 @@ namespace Academy.Controllers
             return View(model);
         }
 
-        public ActionResult AddOrUpdate(Guid? id, Guid? EstablishmentId)
+        public ActionResult AddOrUpdate(Guid? id, Guid? establishmentId)
         {
             var model = new ClassroomModel();
             if (id.HasValue)
             {
                 model = ClassroomModel.ToModel(ClassroomRepository.GetById(id.Value));
             }
-            if (EstablishmentId.HasValue)
+            if (establishmentId.HasValue)
             {
-                model.Establishment_Id = EstablishmentId.Value;
+                model.Establishment_Id = establishmentId.Value;
             }
             return View(model);
         }
@@ -84,14 +86,14 @@ namespace Academy.Controllers
             return Redirect(Url.Action("Get", "Classroom", new { id = classroom.Id }));
         }
 
-        public ActionResult Delete(Guid Id)
+        public ActionResult Delete(Guid id)
         {
-            var classroom = ClassroomRepository.GetById(Id);
+            var classroom = ClassroomRepository.GetById(id);
             if (classroom.Pupils.Count() > 0)
             {
                 return Redirect(Url.Action("GetAll", "Classroom"));
             }
-            ClassroomRepository.Delete(Id);
+            ClassroomRepository.Delete(id);
             ClassroomRepository.Save();
             return Redirect(Url.Action("GetAll", "Classroom"));
         }

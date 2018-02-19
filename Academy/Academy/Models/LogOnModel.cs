@@ -13,6 +13,7 @@ namespace Academy.Models
         [Required]
         [DisplayName("UserName")]
         public string UserName { get; set; }
+
         [Required]
         [DisplayName("Mot de passe")]
         public string Password { get; set; }

@@ -12,7 +12,9 @@ namespace Academy.Models
         public const string USER_ID_KEY = "UserId";
         public static bool IsAuthenticated => Session[USER_ID_KEY] != null;
 
-        public static Guid UserId { get
+        public static Guid UserId
+        {
+            get
             {
                 if (IsAuthenticated)
                 {
@@ -25,8 +27,5 @@ namespace Academy.Models
                 Session.Add(USER_ID_KEY, value.ToString());
             }
         }
-
-
-
     }
 }

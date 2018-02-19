@@ -75,20 +75,21 @@ namespace Academy.Controllers
             return Redirect(Url.Action("GetAll", "Result"));
         }
 
-        public ActionResult AddAllByEval(Guid EvalId)
+        public ActionResult AddAllByEval(Guid evalId)
         {
-            var eval = EvaluationRepository.GetById(EvalId);
+            var eval = EvaluationRepository.GetById(evalId);
             var model = new AddAllByEvalModel
             {
                 EvalId = eval.Id,
                 Results = eval.Classrooms.Pupils.Select(p => new OneResult
                 {
                     Pupil = new ModelWithNameAndId { Id = p.Id, Name = p.FirstName + " " + p.LastName },
-                    Note = p.Results.SingleOrDefault(r => r.Evaluations.Id == EvalId)?.Note ?? 0
+                    Note = p.Results.SingleOrDefault(r => r.Evaluations.Id == evalId)?.Note ?? 0
                 }).ToList()
             };
             return View(model);
         }
+
         [HttpPost]
         public ActionResult AddAllByEval(AddAllByEvalModel model)
         {

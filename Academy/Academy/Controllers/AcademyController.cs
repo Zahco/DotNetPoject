@@ -10,7 +10,6 @@ using Academy.Attributes;
 
 namespace Academy.Controllers
 {
-
     [RequiredConnectedUser]
     public class AcademyController : Controller
     {
@@ -23,7 +22,7 @@ namespace Academy.Controllers
 
         public ActionResult GetAll()
         {
-            var models = AcademyRepository.All().Select(a => AcademyModel.ToModel(a));
+            var models = AcademyRepository.All().OrderBy(a => a.Name).Select(a => AcademyModel.ToModel(a));
             return View(models);
         }
         
@@ -67,9 +66,9 @@ namespace Academy.Controllers
             return Redirect(Url.Action("Get", "Academy", new { id = academy.Id }));
         }
         
-        public ActionResult Delete(Guid Id)
+        public ActionResult Delete(Guid id)
         {        
-            AcademyRepository.Delete(Id);
+            AcademyRepository.Delete(id);
             AcademyRepository.Save();
             return Redirect(Url.Action("GetAll", "Academy"));
         }

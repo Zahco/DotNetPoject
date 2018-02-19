@@ -40,7 +40,7 @@
                         <a href="@Url.Action("Get", "Evaluation", new { id = evaluation.Id })">@evaluation.Classroom</a>
                     </td>
                     <td>
-                        @evaluation.Date
+                        @evaluation.Date.ToShortDateString()
                     </td>
                     <td>
                         @evaluation.User
