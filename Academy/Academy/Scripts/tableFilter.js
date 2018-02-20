@@ -19,5 +19,10 @@ function tableFilter(id, filter) {
             }
         });
 
+        if ($table.find("tbody tr").length == 1 || response.length == 0) {
+            $table.find("tbody tr:last-child").show();
+            $table.find("tbody tr:last-child td").show();
+        }
+
     });
 }

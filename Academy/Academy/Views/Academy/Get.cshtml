@@ -53,10 +53,8 @@
                         </td>
                     </tr>
                 }
-                @if (Model.Establishments.Count() == 0)
-                {
-                    <tr><td class="text-center" colspan="10">Aucun établissement n'est présent dans l'académie @Model.Name.</td></tr>
-                }
+
+                    <tr><td class="text-center" @(Model.Establishments.Count() == 0 ? "" : "style=display:none;") colspan="10">Aucun établissement n'est présent dans l'académie @Model.Name.</td></tr>
             </tbody>
         </table>
     </section>

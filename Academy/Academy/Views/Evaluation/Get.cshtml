@@ -66,10 +66,8 @@
                         </td>
                     </tr>
                 }
-                @if (Model.Results.Count() == 0)
-                {
-                    <tr><td class="text-center" colspan="10">Aucun résultat pour cette évaluation.</td></tr>
-                }
+                    <tr><td class="text-center" @(Model.Results.Count() == 0 ? "" : "style=display:none;") colspan="10">Aucun résultat pour cette évaluation.</td></tr>
+
             </tbody>
         </table>
     </section>

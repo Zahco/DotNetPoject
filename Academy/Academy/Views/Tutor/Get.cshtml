@@ -67,10 +67,8 @@
                             </td>
                         </tr>
                     }
-                    @if (Model.Pupils.Count() == 0)
-                {
-                        <tr><td class="text-center" colspan="10">@Model.FullName n'a aucun élève à sa charge.</td></tr>
-                    }
+                        <tr><td class="text-center" @(Model.Pupils.Count() == 0 ? "" : "style=display:none;") colspan="10">@Model.FullName n'a aucun élève à sa charge.</td></tr>
+
                 </tbody>
             </table>
     </section>
