@@ -36,7 +36,7 @@
                         <a class="add-link" href="@Url.Action("AddOrUpdate", "Pupil", new { ClassroomId = Model.Id })" role="button">
                             <i class="glyphicon glyphicon-plus"></i>
                         </a>
-                        <span>@Html.DisplayNameFor(m => m.Students.First().Name)</span>
+                        <span>@Html.DisplayNameFor(m => m.Students)</span>
                     </th>
                     <td align="right">
                         <div class="input-group">
@@ -79,7 +79,7 @@
                         <a class="add-link" href="@Url.Action("AddOrUpdate", "Evaluation", new { ClassroomId = Model.Id })" role="button">
                             <i class="glyphicon glyphicon-plus"></i>
                         </a>
-                        <span>@Html.DisplayNameFor(m => m.Evaluations.First().Name)</span>
+                        <span>@Html.DisplayNameFor(m => m.Evaluations)</span>
                     </th>
                     <td align="right">
                         <div class="input-group">

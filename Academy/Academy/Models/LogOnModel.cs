@@ -11,7 +11,7 @@ namespace Academy.Models
     public class LogOnModel : IValidatableObject
     {
         [Required]
-        [DisplayName("UserName")]
+        [DisplayName("Nom d'utilisateur")]
         public string UserName { get; set; }
 
         [Required]

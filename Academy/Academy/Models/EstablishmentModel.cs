@@ -51,6 +51,7 @@ namespace Academy.Models
         [DisplayName("Directeur")]
         public string User { get; set; }
 
+        [DisplayName("Nom des classes")]
         public IEnumerable<ModelWithNameAndId> Classrooms { get; set; }
 
         [DisplayName("Adresse")]
