@@ -12,6 +12,5 @@ namespace Academy.Attributes
             if (!GlobalVariables.IsAuthenticated)
                 filterContext.HttpContext.Response.Redirect("/Session/LogOn?ReturnUrl=" + filterContext.HttpContext.Request.RawUrl);
         }
-
     }
 }
