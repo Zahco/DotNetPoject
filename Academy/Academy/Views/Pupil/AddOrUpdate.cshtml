@@ -1,0 +1,80 @@
+﻿@model PupilModel
+@{
+    if (Model.Id == Guid.Empty)
+    {
+        ViewBag.Title = "Ajout d'un étudiant";
+    }
+    else
+    {
+        ViewBag.Title = "Modification de " + Model.FullName;
+    }
+}
+
+<section class="row">
+    <div class="col-md-12">
+        @if (Model.Id == Guid.Empty)
+        {
+            <h1>Ajout d'une nouvel élève</h1>
+        }
+        else
+        {
+            <h1>Modification des informations de @Model.FullName</h1>
+        }
+        @using (Html.BeginForm("AddOrUpdate", "Pupil", FormMethod.Post, new { @id = "form-add-update", role = "form" }))
+        {
+            HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
+
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FirstName)
+                @Html.EditorFor(model => model.FirstName, new { aria_describedby = "firstname-help-text" })
+                <div id="firstname-help-text" class="help-block">@Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })</div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LastName)
+                @Html.EditorFor(model => model.LastName, new { aria_describedby = "lastname-help-text" })
+                <div id="lastname-help-text" class="help-block">@Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })</div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Sex)
+                @Html.DropDownList("Sex",
+                    new SelectList(Enum.GetValues(typeof(Gender))),
+                    "Sélectionner votre sexe")
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BirthdayDate)
+                @Html.EditorFor(model => model.BirthdayDate)
+                @Html.ValidationMessageFor(model => model.BirthdayDate)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Levels)
+                @Html.EditorFor(model => model.LevelId)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.State)
+                @Html.EditorFor(model => model.State)
+                @Html.ValidationMessageFor(model => model.State)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Classrooms)
+                @Html.EditorFor(model => model.ClassroomId)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Tutor)
+                @Html.EditorFor(model => model.TutorId)
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Sauvegarder</button>
+            </div>
+        }
+    </div>
+</section>

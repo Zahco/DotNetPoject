@@ -1,0 +1,83 @@
+﻿@model TutorModel
+@{
+    if (Model.Id == Guid.Empty)
+    {
+        ViewBag.Title = "Ajout d'un tuteur";
+    }
+    else
+    {
+        ViewBag.Title = "Modification de " + Model.FullName;
+    }
+}
+
+<section class="row">
+    <div class="col-md-12">
+        @if (Model.Id == Guid.Empty)
+        {
+            <h1>Ajout d'une nouveau tuteur</h1>
+        }
+        else
+        {
+            <h1>Modification des informations de @Model.FullName</h1>
+        }
+
+        @using (Html.BeginForm("AddOrUpdate", "Tutor", FormMethod.Post, new { @id = "form-add-update", role = "form" }))
+        {
+            HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
+
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FirstName)
+                @Html.EditorFor(model => model.FirstName, new { aria_describedby = "firstname-help-text" })
+                <div id="firstname-help-text" class="help-block">@Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })</div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LastName)
+                @Html.EditorFor(model => model.LastName, new { aria_describedby = "lastname-help-text" })
+                <div id="lastname-help-text" class="help-block">@Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })</div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Address)
+                @Html.EditorFor(model => model.Address, new { aria_describedby = "address-help-text" })
+                <div id="address-help-text" class="help-block">@Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })</div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PostCode)
+                @Html.EditorFor(model => model.PostCode, new { aria_describedby = "postcode-help-text" })
+                <div id="postcode-help-text" class="help-block">@Html.ValidationMessageFor(model => model.PostCode, "", new { @class = "text-danger" })</div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Town)
+                @Html.EditorFor(model => model.Town, new { aria_describedby = "town-help-text" })
+                <div id="town-help-text" class="help-block">@Html.ValidationMessageFor(model => model.Town, "", new { @class = "text-danger" })</div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Tel)
+                @Html.EditorFor(model => model.Tel, new { aria_describedby = "phone-help-text" })
+                <div id="phone-help-text" class="help-block">@Html.ValidationMessageFor(model => model.Tel, "", new { @class = "text-danger" })</div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Mail)
+                @Html.EditorFor(model => model.Mail, new { aria_describedby = "email-help-text" })
+                <div id="email-help-text" class="help-block">@Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })</div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Comment)
+                @Html.TextAreaFor(model => model.Comment, new { aria_describedby = "comment-help-text", cols = 80, @rows = 5 })
+                <div id="comment-help-text" class="help-block">@Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })</div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Sauvegarder</button>
+            </div>
+        }
+    </div>
+</section>

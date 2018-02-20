@@ -1,0 +1,40 @@
+﻿@model AddAllByEvalModel
+@{
+    ViewBag.Title = "Notes";
+}
+
+<h2>Ajout des notes</h2>
+
+
+@using (Html.BeginForm("AddAllByEval", "Result", FormMethod.Post, new { @id = "form-add-update", role = "form" }))
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
+    @Html.HiddenFor(m => m.EvalId)
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Elève</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.Results.Count(); ++i)
+            {
+                <tr>
+                    <td>
+                        <span>@Model.Results[i].Pupil.Name</span>
+                        <input type="hidden" name="Results[@i].Pupil.Id" value="@Model.Results[i].Pupil.Id" />
+                        <input type="hidden" name="Results[@i].Pupil.Name" value="@Model.Results[i].Pupil.Name" />
+                    </td>
+                    <td>
+                        <input type="number" step="any" name="Results[@i].Note" value="@Model.Results[i].Note" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="form-group">
+        <button class="btn btn-default" type="submit">Sauvegarder</button>
+    </div>
+}

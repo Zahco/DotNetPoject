@@ -1,0 +1,25 @@
+﻿@model ResultModel
+@{
+    var id = Html.RandomID();
+    ViewBag.Title = "Note";
+}
+<section class="row">
+    <aside class="col-md-12">
+        <h1>Note</h1>
+        <ul class="list-unstyled">
+            <li>@Html.DisplayNameFor(m => m.Evaluation) : <a href="@Url.Action("Get", "Evaluation", new { id = Model.Evaluation.Id })">@Model.Evaluation.Name</a></li>
+            <li>@Html.DisplayNameFor(m => m.Pupil) : <a href="@Url.Action("Get", "Pupil", new { id = Model.Pupil.Id })">@Model.Pupil.Name</a></li>
+            <li>@Html.DisplayNameFor(m => m.Note) : @Model.Note</li>
+        </ul>
+
+        <section id="crud-action">
+            <a class="btn btn-default update-link" href="@Url.Action("Update", "Result", new { id = Model.Id })" role="button">
+                <i class="glyphicon glyphicon-pencil"></i> Modifier
+            </a>
+
+            <a class="btn btn-danger delete-link" href="@Url.Action("Delete", "Result", new { id = Model.Id })" role="button">
+                <i class="glyphicon glyphicon-trash"></i> Supprimer
+            </a>
+        </section>
+    </aside>   
+</section>

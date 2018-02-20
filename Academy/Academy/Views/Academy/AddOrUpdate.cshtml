@@ -1,0 +1,41 @@
+﻿@model AcademyModel
+@{
+    if (Model.Id == Guid.Empty)
+    {
+        ViewBag.Title = "Ajout d'une Académie";
+    }
+    else
+    {
+        ViewBag.Title = "Modification de l'académie de " + Model.Name;
+    }
+}
+
+<section class="row">
+    <div class="col-md-12">
+        @if (Model.Id == Guid.Empty)
+        {
+            <h1>Ajout d'une nouvelle académie</h1>
+        }
+        else
+        {
+            <h1>Modification de l'académie de @Model.Name</h1>
+        }
+
+        @using (Html.BeginForm("AddOrUpdate", "Academy", FormMethod.Post, new { @id = "form-add-update", role = "form" }))
+        {
+            HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
+
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name)
+                @Html.EditorFor(model => model.Name, new { aria_describedby = "name-help-text" })
+                <div id="name-help-text" class="help-block">@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })</div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Sauvegarder</button>
+            </div>
+        }
+    </div>
+</section>

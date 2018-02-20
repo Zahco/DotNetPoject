@@ -1,0 +1,76 @@
+﻿@model EvaluationModel
+@{
+    var id = Html.RandomID();
+    ViewBag.Title = "Evaluation";
+}
+
+<section class="row">
+    <aside class="col-md-3">
+        <h1>&Eacute;valuation</h1>
+        <ul class="list-unstyled">
+            <li>Classe : <a href="@Url.Action("Get", "Classroom", new { Id = Model.ClassroomId })">@Model.ClassroomWithNameAndId.Name</a></li>
+            <li>Date : @Model.Date.ToShortDateString()</li>
+            <li>Total des points : @Model.TotalPoint</li>
+        </ul>
+        <section id="crud-action">
+            <a class="btn btn-default update-link" href="@Url.Action("Update", "Evaluation", new { id = Model.Id })" role="button">
+                <i class="glyphicon glyphicon-pencil"></i> Modifier
+            </a>
+            <a class="btn btn-danger delete-link" href="@Url.Action("Delete", "Evaluation", new { id = Model.Id })" role="button">
+                <i class="glyphicon glyphicon-trash"></i> Supprimer
+            </a>
+        </section>
+        <section id="crud-action" style="margin-top: 1em;">
+            <a class="btn btn-default update-link" href="@Url.Action("AddAllByEval", "Result", new { EvalId = Model.Id })" role="button">
+                <i class="glyphicon glyphicon-pencil"></i> Saisir les Résultats
+            </a>
+        </section>
+    </aside>
+
+    <section class="col-md-9">
+        <h2>Résultat de la classe @Model.ClassroomWithNameAndId.Name</h2>
+        <table id="@id" class="table table-striped table-hover" data-filter-url="@Url.Action("GetByFilter", "Result")">
+            <thead>
+                <tr>
+                    <th>
+                        <span>Résultat</span>
+                    </th>
+                    <th>
+                        <span>Elèves</span>
+                    </th>
+                    <td align="right">
+                        <div class="input-group">
+                            <input class="form-control" type="text" data-filter-id="@id" placeholder="Rechercher" />
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                        </div>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var result in Model.Results)
+                {
+                    <tr id="@result.Result.Id">
+                        <td>
+                            <a href="@Url.Action("Get","Result", new { Id = result.Result.Id })">@result.Result.Name</a>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Get","Pupil", new { Id = result.Pupil.Id })">@result.Pupil.Name</a>
+                        </td>
+                        <td align="right">
+                            <a class="update-link" href="@Url.Action("Update", "Result", new { id = result.Result.Id })" role="button">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </a>
+                            <a class="delete-link" href="@Url.Action("Delete", "Result", new { id = result.Result.Id })" role="button">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+                    <tr><td class="text-center" @(Model.Results.Count() == 0 ? "" : "style=display:none;") colspan="10">Aucun résultat pour cette évaluation.</td></tr>
+
+            </tbody>
+        </table>
+    </section>
+</section>
+
+

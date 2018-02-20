@@ -1,0 +1,72 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+	background-image: url('/Content/img/backtoschool.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment:fixed;
+	background-size:cover;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+	padding-left: 15px;
+	padding-right: 15px;
+	background-color: rgba(255,255,255,0.8);
+	border-radius: 0px 0px 5px 5px;
+	box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, .2);
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* Remove underline style on add, update and delete icon. */
+a.add-link, a.update-link, a.delete-link {
+    text-decoration: none;
+}
+
+/* Add margin between icons and another icons or texts. */
+a.delete-link, a.add-link + span {
+    margin-left: 5px;
+}
+
+a.delete-link {
+    margin-right: 5px;
+}
+
+thead tr td {
+    border-bottom: 2px solid #dddddd;
+}
+
+.home {
+	margin-top: 20px;
+	text-align:center;
+	font-size: 2em;
+}
+.home p:last-child {
+	text-align: right;
+}
+h1 {
+	margin-left: 10px;
+}
+
+footer {
+	text-align: center;
+}
+
+.navbar .container {
+	background-color: rgba(255,255,255,0.8);
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+	box-shadow: 3px 0px 3px 3px rgba(0, 0, 0, .2);
+}

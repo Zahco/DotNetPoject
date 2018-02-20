@@ -1,0 +1,35 @@
+﻿@model Guid
+
+@{
+    ViewBag.Title = "SelectFor";
+    var id = Html.RandomID();
+    var name = ViewData.TemplateInfo.HtmlFieldPrefix;
+    var method = (string) ViewData.ModelMetadata.AdditionalValues["method"];
+}
+
+<select id="@id" name="@name"></select>
+
+@*@section scripts {*@
+    <script type="text/javascript">
+        $(document).ready(getSelectFor_@(id)());
+
+    function getSelectFor_@(id)() {
+        $.ajax({
+            type: "GET",
+            url: "@Url.Action(method, "Api")",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            failure: function (response) {
+                alert(response.d);
+            },
+            success: function (data) {
+                for (var i = 0; i < data.length; ++i) {
+                    var opt = new Option(data[i].Name, data[i].Id);
+                    $('#@id').append(opt);
+                    $('#@id').find("[value=@Model]").attr("selected", "true");
+                }
+            }
+        });
+    }
+    </script>
+@*}*@

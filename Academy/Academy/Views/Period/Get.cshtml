@@ -1,0 +1,27 @@
+﻿@model PeriodModel
+@{
+    ViewBag.Title = "Période";
+    var id = Html.RandomID();
+}
+
+<section class="row">
+    <aside class="col-md-3">
+        <h1>Période</h1>
+        <ul class="list-unstyled">
+            <li>Date de début : @Model.Begin.ToShortDateString()</li>
+            <li>Date de fin : @Model.End.ToShortDateString()</li>
+            <li>Année scolaire : @Model.Year.Name</li>
+        </ul>
+
+        <section class="crud-action">
+            <a class="btn btn-default update-link" href="@Url.Action("AddOrUpdate", "Period", new { id = Model.Id })" role="button">
+                <i class="glyphicon glyphicon-pencil"></i> Modifier
+            </a>
+
+            <a class="btn btn-danger delete-link" href="@Url.Action("Delete", "Period", new { id = Model.Id })" role="button">
+                <i class="glyphicon glyphicon-trash"></i> Supprimer
+            </a>
+        </section>
+    </aside>
+</section>
+
