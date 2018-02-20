@@ -18,21 +18,20 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Académie", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Accueil", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Académies", "GetAll", "Academy")</li>
-                    <li>@Html.ActionLink("Etablissements", "GetAll", "Establishment")</li>
-                    <li>@Html.ActionLink("Classes", "GetAll", "Classroom")</li>
-                    <li>@Html.ActionLink("Elèves", "GetAll", "Pupil")</li>
-                    <li>@Html.ActionLink("Tuteurs", "GetAll", "Tutor")</li>
-                    <li>@Html.ActionLink("Evaluations", "GetAll", "Evaluation")</li>
-                    <li>@Html.ActionLink("Périodes", "GetAll", "Period")</li>
-                    <li>@Html.ActionLink("Resultats", "GetAll", "Result")</li>
-
                     @if (GlobalVariables.IsAuthenticated)
                     {
+                        <li>@Html.ActionLink("Académies", "GetAll", "Academy")</li>
+                        <li>@Html.ActionLink("Etablissements", "GetAll", "Establishment")</li>
+                        <li>@Html.ActionLink("Classes", "GetAll", "Classroom")</li>
+                        <li>@Html.ActionLink("Elèves", "GetAll", "Pupil")</li>
+                        <li>@Html.ActionLink("Tuteurs", "GetAll", "Tutor")</li>
+                        <li>@Html.ActionLink("Evaluations", "GetAll", "Evaluation")</li>
+                        <li>@Html.ActionLink("Périodes", "GetAll", "Period")</li>
+                        <li>@Html.ActionLink("Resultats", "GetAll", "Result")</li>
                         <li>@Html.ActionLink("Déconnexion", "LogOff", "Session")</li>
                     }
                     else
@@ -47,7 +46,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>Gille&Spaur Corporation &copy; @DateTime.Now.Year - Académie Application</p>
+            <p>Nicolas Gille & Geoffrey Spaur &copy; @DateTime.Now.Year - <a href="https://github.com/Zahco/DotNetPoject" title="Source de l'aplication">Académie Application</a></p>
         </footer>
     </div>
 
